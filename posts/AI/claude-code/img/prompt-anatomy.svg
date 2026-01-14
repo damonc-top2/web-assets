@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="500" fill="#f8f9fa" rx="10" ry="10"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Prompt System Anatomy</text>
+
+  <!-- Layer 1: System -->
+  <g transform="translate(150, 80)">
+    <rect width="500" height="60" rx="5" fill="#e1f5fe" stroke="#0288d1" stroke-width="2"/>
+    <text x="20" y="35" font-family="monospace" font-size="16" font-weight="bold" fill="#01579b">SYSTEM PROMPT</text>
+    <text x="480" y="35" font-family="Arial, sans-serif" font-size="12" text-anchor="end" fill="#555">Identity, Permissions, Safety</text>
+  </g>
+
+  <!-- Layer 2: Context/Files -->
+  <g transform="translate(150, 150)">
+    <rect width="500" height="100" rx="5" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+    <text x="20" y="30" font-family="monospace" font-size="16" font-weight="bold" fill="#e65100">CONTEXT &amp; FILES</text>
+    <text x="480" y="30" font-family="Arial, sans-serif" font-size="12" text-anchor="end" fill="#555">Loaded via Context Engine</text>
+    
+    <!-- File Icons -->
+    <rect x="30" y="50" width="40" height="40" rx="2" fill="#fff" stroke="#ffb74d"/>
+    <rect x="80" y="50" width="40" height="40" rx="2" fill="#fff" stroke="#ffb74d"/>
+    <rect x="130" y="50" width="40" height="40" rx="2" fill="#fff" stroke="#ffb74d"/>
+    <text x="190" y="75" font-family="Arial, sans-serif" font-size="12" fill="#777">...Code snippets, docs...</text>
+  </g>
+
+  <!-- Layer 3: Conversation History -->
+  <g transform="translate(150, 260)">
+    <rect width="500" height="120" rx="5" fill="#f3e5f5" stroke="#8e24aa" stroke-width="2"/>
+    <text x="20" y="30" font-family="monospace" font-size="16" font-weight="bold" fill="#4a148c">CONVERSATION HISTORY</text>
+    
+    <rect x="30" y="50" width="440" height="25" rx="10" fill="#fff"/>
+    <text x="45" y="67" font-family="Arial, sans-serif" font-size="12" fill="#555">User: Add a new feature...</text>
+    
+    <rect x="30" y="85" width="440" height="25" rx="10" fill="#ede7f6"/>
+    <text x="45" y="102" font-family="Arial, sans-serif" font-size="12" fill="#555">Assistant: Executing `ls`...</text>
+  </g>
+
+  <!-- Layer 4: Current Turn -->
+  <g transform="translate(150, 390)">
+    <rect width="500" height="60" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="20" y="35" font-family="monospace" font-size="16" font-weight="bold" fill="#1b5e20">CURRENT TURN</text>
+    <text x="480" y="35" font-family="Arial, sans-serif" font-size="12" text-anchor="end" fill="#555">New User Query</text>
+  </g>
+</svg>
