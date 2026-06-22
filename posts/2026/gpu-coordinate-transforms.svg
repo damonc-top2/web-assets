@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg"  role="img" aria-label="顶点坐标空间变换" viewBox="0 0 1050 360" width="800" height="274" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .space{fill:#f8fafc;stroke:#94a3b8;stroke-width:2;rx:14}
+      .mat{fill:#0f172a;stroke:#475569;stroke-width:2;rx:10}
+      .screen{fill:#ecfdf5;stroke:#10b981;stroke-width:2;rx:14}
+      .h{font:700 15px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .m{font:700 13px monospace;fill:#e5e7eb}
+      .a{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow3)}
+      .axis{stroke:#64748b;stroke-width:2}
+    </style>
+  </defs>
+
+  <rect x="36" y="104" width="130" height="96" class="space"/>
+  <text x="101" y="136" text-anchor="middle" class="h">Object</text>
+  <text x="101" y="160" text-anchor="middle" class="t">模型自己的坐标</text>
+  <path d="M76 180 L126 180 M76 180 L76 140" class="axis"/>
+
+  <rect x="216" y="118" width="70" height="66" class="mat"/>
+  <text x="251" y="156" text-anchor="middle" class="m">M</text>
+
+  <rect x="336" y="104" width="130" height="96" class="space"/>
+  <text x="401" y="136" text-anchor="middle" class="h">World</text>
+  <text x="401" y="160" text-anchor="middle" class="t">场景公共坐标</text>
+  <circle cx="401" cy="180" r="10" fill="#2563eb"/>
+
+  <rect x="516" y="118" width="70" height="66" class="mat"/>
+  <text x="551" y="156" text-anchor="middle" class="m">V</text>
+
+  <rect x="636" y="104" width="130" height="96" class="space"/>
+  <text x="701" y="136" text-anchor="middle" class="h">View</text>
+  <text x="701" y="160" text-anchor="middle" class="t">相机眼睛坐标</text>
+  <path d="M678 182 L724 160 L724 204 Z" fill="#7c3aed" opacity="0.85"/>
+
+  <rect x="816" y="118" width="70" height="66" class="mat"/>
+  <text x="851" y="156" text-anchor="middle" class="m">P</text>
+
+  <rect x="936" y="104" width="90" height="96" class="screen"/>
+  <text x="981" y="136" text-anchor="middle" class="h">Screen</text>
+  <text x="981" y="160" text-anchor="middle" class="t">像素坐标</text>
+  <rect x="960" y="170" width="42" height="20" fill="#10b981" opacity="0.45"/>
+
+  <path d="M168 152 L212 152" class="a"/>
+  <path d="M288 152 L332 152" class="a"/>
+  <path d="M468 152 L512 152" class="a"/>
+  <path d="M588 152 L632 152" class="a"/>
+  <path d="M768 152 L812 152" class="a"/>
+  <path d="M888 152 L932 152" class="a"/>
+
+  <text x="531" y="284" text-anchor="middle" class="t">顶点着色器输出裁剪空间位置，之后硬件做透视除法和 viewport 映射。</text>
+</svg>

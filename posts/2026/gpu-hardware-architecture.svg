@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg"  role="img" aria-label="GPU 内部结构示意图" viewBox="0 0 980 430" width="800" height="351" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+    <style>
+      .chip{fill:#111827;stroke:#334155;stroke-width:3;rx:24}
+      .unit{fill:#1e293b;stroke:#64748b;stroke-width:1.5;rx:10}
+      .fixed{fill:#312e81;stroke:#818cf8;stroke-width:1.5;rx:10}
+      .mem{fill:#064e3b;stroke:#34d399;stroke-width:2;rx:14}
+      .bus{fill:#f8fafc;stroke:#94a3b8;stroke-width:2;rx:14}
+      .white{font:14px sans-serif;fill:#e5e7eb}
+      .title{font:700 18px sans-serif;fill:#f8fafc}
+      .label{font:14px sans-serif;fill:#334155}
+      .tiny{font:12px sans-serif;fill:#cbd5e1}
+      .link{stroke:#64748b;stroke-width:2;fill:none;marker-end:url(#arrow1)}
+    </style>
+  </defs>
+  <rect x="230" y="34" width="520" height="320" class="chip"/>
+  <text x="490" y="68" text-anchor="middle" class="title">GPU Die</text>
+
+  <g>
+    <rect x="270" y="95" width="105" height="72" class="unit"/>
+    <text x="322" y="124" text-anchor="middle" class="white">SM / CU</text>
+    <text x="322" y="148" text-anchor="middle" class="tiny">SIMT Lanes</text>
+    <rect x="392" y="95" width="105" height="72" class="unit"/>
+    <text x="444" y="124" text-anchor="middle" class="white">SM / CU</text>
+    <text x="444" y="148" text-anchor="middle" class="tiny">Warps</text>
+    <rect x="514" y="95" width="105" height="72" class="unit"/>
+    <text x="566" y="124" text-anchor="middle" class="white">SM / CU</text>
+    <text x="566" y="148" text-anchor="middle" class="tiny">ALU</text>
+    <rect x="636" y="95" width="74" height="72" class="unit"/>
+    <text x="673" y="124" text-anchor="middle" class="white">...</text>
+    <text x="673" y="148" text-anchor="middle" class="tiny">Many</text>
+  </g>
+
+  <rect x="270" y="195" width="145" height="62" class="fixed"/>
+  <text x="342" y="222" text-anchor="middle" class="white">Rasterizer</text>
+  <text x="342" y="244" text-anchor="middle" class="tiny">三角形变片元</text>
+  <rect x="430" y="195" width="145" height="62" class="fixed"/>
+  <text x="502" y="222" text-anchor="middle" class="white">Texture Units</text>
+  <text x="502" y="244" text-anchor="middle" class="tiny">过滤 / MipMap</text>
+  <rect x="590" y="195" width="120" height="62" class="fixed"/>
+  <text x="650" y="222" text-anchor="middle" class="white">ROP</text>
+  <text x="650" y="244" text-anchor="middle" class="tiny">深度 / 混合</text>
+
+  <rect x="270" y="286" width="440" height="36" class="fixed"/>
+  <text x="490" y="310" text-anchor="middle" class="white">L2 Cache / Memory Controller</text>
+
+  <rect x="42" y="120" width="130" height="84" class="bus"/>
+  <text x="107" y="153" text-anchor="middle" class="label">CPU / RAM</text>
+  <text x="107" y="178" text-anchor="middle" class="label">Command</text>
+
+  <rect x="810" y="74" width="130" height="230" class="mem"/>
+  <text x="875" y="112" text-anchor="middle" class="white">VRAM</text>
+  <text x="875" y="148" text-anchor="middle" class="tiny">Meshes</text>
+  <text x="875" y="174" text-anchor="middle" class="tiny">Textures</text>
+  <text x="875" y="200" text-anchor="middle" class="tiny">Buffers</text>
+  <text x="875" y="226" text-anchor="middle" class="tiny">Render Targets</text>
+  <text x="875" y="252" text-anchor="middle" class="tiny">Depth</text>
+
+  <rect x="392" y="374" width="196" height="42" class="bus"/>
+  <text x="490" y="401" text-anchor="middle" class="label">Display Controller</text>
+
+  <path d="M172 162 L226 162" class="link"/>
+  <path d="M750 195 L806 195" class="link"/>
+  <path d="M490 354 L490 370" class="link"/>
+</svg>

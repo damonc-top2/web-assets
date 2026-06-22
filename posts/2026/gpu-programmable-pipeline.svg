@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="现代图形管线中的固定功能和可编程阶段" viewBox="0 0 1180 420" width="900" height="320" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow-prog-pipe" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .box{fill:#ffffff;stroke:#cbd5e1;stroke-width:2;rx:14}
+      .prog{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:14}
+      .fixed{fill:#f5f3ff;stroke:#7c3aed;stroke-width:2;rx:14}
+      .mem{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:14}
+      .title{font:700 20px sans-serif;fill:#0f172a}
+      .h{font:700 14px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .small{font:12px sans-serif;fill:#64748b}
+      .arrow{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow-prog-pipe)}
+    </style>
+  </defs>
+
+  <rect width="1180" height="420" class="bg"/>
+  <text x="590" y="42" text-anchor="middle" class="title">图形管线不是全可编程：高频规则仍由固定功能硬件承担</text>
+
+  <rect x="42" y="100" width="126" height="86" class="box"/>
+  <text x="105" y="132" text-anchor="middle" class="h">Input Assembler</text>
+  <text x="105" y="156" text-anchor="middle" class="t">Vertex / Index</text>
+  <text x="105" y="174" text-anchor="middle" class="t">Buffers</text>
+
+  <rect x="202" y="100" width="132" height="86" class="prog"/>
+  <text x="268" y="132" text-anchor="middle" class="h">Vertex Shader</text>
+  <text x="268" y="156" text-anchor="middle" class="t">空间变换</text>
+  <text x="268" y="174" text-anchor="middle" class="t">插值数据</text>
+
+  <rect x="368" y="100" width="126" height="86" class="fixed"/>
+  <text x="431" y="132" text-anchor="middle" class="h">Assembly</text>
+  <text x="431" y="156" text-anchor="middle" class="t">装配 / 裁剪</text>
+  <text x="431" y="174" text-anchor="middle" class="t">Cull</text>
+
+  <rect x="528" y="100" width="126" height="86" class="fixed"/>
+  <text x="591" y="132" text-anchor="middle" class="h">Rasterizer</text>
+  <text x="591" y="156" text-anchor="middle" class="t">覆盖测试</text>
+  <text x="591" y="174" text-anchor="middle" class="t">Fragment</text>
+
+  <rect x="688" y="100" width="138" height="86" class="prog"/>
+  <text x="757" y="132" text-anchor="middle" class="h">Fragment Shader</text>
+  <text x="757" y="156" text-anchor="middle" class="t">纹理 / 光照</text>
+  <text x="757" y="174" text-anchor="middle" class="t">候选颜色</text>
+
+  <rect x="860" y="100" width="126" height="86" class="fixed"/>
+  <text x="923" y="132" text-anchor="middle" class="h">Output Merger</text>
+  <text x="923" y="156" text-anchor="middle" class="t">Depth / Stencil</text>
+  <text x="923" y="174" text-anchor="middle" class="t">Blend</text>
+
+  <rect x="1020" y="100" width="126" height="86" class="mem"/>
+  <text x="1083" y="132" text-anchor="middle" class="h">Framebuffer</text>
+  <text x="1083" y="156" text-anchor="middle" class="t">Color</text>
+  <text x="1083" y="174" text-anchor="middle" class="t">Depth</text>
+
+  <path d="M170 143 L198 143" class="arrow"/>
+  <path d="M336 143 L364 143" class="arrow"/>
+  <path d="M496 143 L524 143" class="arrow"/>
+  <path d="M656 143 L684 143" class="arrow"/>
+  <path d="M828 143 L856 143" class="arrow"/>
+  <path d="M988 143 L1016 143" class="arrow"/>
+
+  <rect x="250" y="250" width="180" height="44" class="prog"/>
+  <text x="340" y="278" text-anchor="middle" class="small">可编程：表达变化</text>
+  <rect x="500" y="250" width="180" height="44" class="fixed"/>
+  <text x="590" y="278" text-anchor="middle" class="small">固定功能：稳定吞吐</text>
+  <rect x="750" y="250" width="180" height="44" class="mem"/>
+  <text x="840" y="278" text-anchor="middle" class="small">显存资源：读写结果</text>
+
+  <text x="590" y="352" text-anchor="middle" class="small">工程判断：Shader 负责可变算法，固定阶段负责高频规则。优化时必须看当前瓶颈落在哪一段。</text>
+</svg>

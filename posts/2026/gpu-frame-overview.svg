@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg"  role="img" aria-label="CPU GPU 显示器的一帧渲染总流程" viewBox="0 0 980 260" width="800" height="212" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="g0" x1="0" x2="1">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <marker id="arrow0" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#94a3b8;stroke-width:2;rx:16}
+      .head{font:700 18px sans-serif;fill:#0f172a}
+      .text{font:14px sans-serif;fill:#334155}
+      .small{font:12px sans-serif;fill:#64748b}
+      .arrow{stroke:#475569;stroke-width:2.5;fill:none;marker-end:url(#arrow0)}
+      .bar{fill:url(#g0);rx:10}
+    </style>
+  </defs>
+  <rect x="24" y="30" width="230" height="170" class="box"/>
+  <text x="139" y="65" text-anchor="middle" class="head">CPU</text>
+  <text x="52" y="100" class="text">游戏逻辑 / 动画 / 物理</text>
+  <text x="52" y="126" class="text">剔除可见物体</text>
+  <text x="52" y="152" class="text">排序 Render Queue</text>
+  <text x="52" y="178" class="text">写入 Command Buffer</text>
+
+  <rect x="370" y="30" width="260" height="170" class="box"/>
+  <text x="500" y="65" text-anchor="middle" class="head">GPU</text>
+  <text x="400" y="100" class="text">顶点处理</text>
+  <text x="400" y="126" class="text">三角形装配与光栅化</text>
+  <text x="400" y="152" class="text">片元着色 / 深度测试</text>
+  <text x="400" y="178" class="text">写入 Framebuffer</text>
+
+  <rect x="746" y="30" width="210" height="170" class="box"/>
+  <text x="851" y="65" text-anchor="middle" class="head">Display</text>
+  <text x="776" y="100" class="text">Swap Chain Present</text>
+  <text x="776" y="126" class="text">扫描输出 Scanout</text>
+  <text x="776" y="152" class="text">RGB 子像素发光</text>
+  <text x="776" y="178" class="text">人眼感知成像</text>
+
+  <path d="M256 115 C300 115 320 115 366 115" class="arrow"/>
+  <path d="M634 115 C682 115 700 115 742 115" class="arrow"/>
+  <rect x="160" y="222" width="660" height="18" class="bar"/>
+  <text x="490" y="252" text-anchor="middle" class="small">一帧时间预算：60 FPS 约 16.67 ms，120 FPS 约 8.33 ms</text>
+</svg>

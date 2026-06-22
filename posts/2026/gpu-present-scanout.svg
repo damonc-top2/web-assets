@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg"  role="img" aria-label="双缓冲和显示扫描" viewBox="0 0 980 380" width="800" height="310" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow7" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .buf{fill:#f8fafc;stroke:#94a3b8;stroke-width:2;rx:14}
+      .front{fill:#ecfdf5;stroke:#10b981;stroke-width:2;rx:14}
+      .back{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:14}
+      .screen{fill:#111827;stroke:#334155;stroke-width:3;rx:20}
+      .scan{stroke:#fbbf24;stroke-width:5}
+      .h{font:700 16px sans-serif;fill:#0f172a}
+      .w{font:700 16px sans-serif;fill:#f8fafc}
+      .t{font:13px sans-serif;fill:#334155}
+      .tw{font:13px sans-serif;fill:#cbd5e1}
+      .a{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow7)}
+    </style>
+  </defs>
+
+  <rect x="64" y="78" width="160" height="100" class="front"/>
+  <text x="144" y="116" text-anchor="middle" class="h">Front Buffer</text>
+  <text x="144" y="144" text-anchor="middle" class="t">正在被扫描</text>
+
+  <rect x="64" y="220" width="160" height="100" class="back"/>
+  <text x="144" y="258" text-anchor="middle" class="h">Back Buffer</text>
+  <text x="144" y="286" text-anchor="middle" class="t">GPU 正在绘制</text>
+
+  <rect x="335" y="126" width="150" height="92" class="buf"/>
+  <text x="410" y="164" text-anchor="middle" class="h">Present</text>
+  <text x="410" y="192" text-anchor="middle" class="t">swap / flip</text>
+
+  <rect x="636" y="58" width="250" height="250" class="screen"/>
+  <text x="761" y="94" text-anchor="middle" class="w">Display Scanout</text>
+  <rect x="678" y="122" width="166" height="126" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+  <line x1="678" y1="168" x2="844" y2="168" class="scan"/>
+  <text x="761" y="278" text-anchor="middle" class="tw">从上到下读取像素行</text>
+
+  <path d="M226 128 L331 168" class="a"/>
+  <path d="M226 270 L331 184" class="a"/>
+  <path d="M487 172 L632 172" class="a"/>
+  <path d="M144 180 C144 202 144 202 144 216" class="a"/>
+</svg>

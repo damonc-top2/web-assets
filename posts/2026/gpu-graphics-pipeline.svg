@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg"  role="img" aria-label="GPU 图形渲染管线" viewBox="0 0 1100 340" width="800" height="247" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .stage{fill:#f8fafc;stroke:#94a3b8;stroke-width:2;rx:14}
+      .programmable{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:14}
+      .fixed2{fill:#f5f3ff;stroke:#7c3aed;stroke-width:2;rx:14}
+      .out{fill:#ecfdf5;stroke:#10b981;stroke-width:2;rx:14}
+      .h{font:700 15px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .a{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow2)}
+      .legend{font:12px sans-serif;fill:#64748b}
+    </style>
+  </defs>
+
+  <rect x="30" y="90" width="118" height="88" class="stage"/>
+  <text x="89" y="122" text-anchor="middle" class="h">Input</text>
+  <text x="89" y="146" text-anchor="middle" class="t">顶点 / 索引</text>
+  <text x="89" y="164" text-anchor="middle" class="t">Vertex Buffer</text>
+
+  <rect x="180" y="90" width="132" height="88" class="programmable"/>
+  <text x="246" y="122" text-anchor="middle" class="h">Vertex Shader</text>
+  <text x="246" y="146" text-anchor="middle" class="t">模型变换</text>
+  <text x="246" y="164" text-anchor="middle" class="t">输出裁剪坐标</text>
+
+  <rect x="344" y="90" width="118" height="88" class="fixed2"/>
+  <text x="403" y="122" text-anchor="middle" class="h">Assembly</text>
+  <text x="403" y="146" text-anchor="middle" class="t">装配三角形</text>
+  <text x="403" y="164" text-anchor="middle" class="t">裁剪 / 剔除</text>
+
+  <rect x="494" y="90" width="118" height="88" class="fixed2"/>
+  <text x="553" y="122" text-anchor="middle" class="h">Rasterizer</text>
+  <text x="553" y="146" text-anchor="middle" class="t">三角形覆盖</text>
+  <text x="553" y="164" text-anchor="middle" class="t">生成片元</text>
+
+  <rect x="644" y="90" width="132" height="88" class="programmable"/>
+  <text x="710" y="122" text-anchor="middle" class="h">Fragment Shader</text>
+  <text x="710" y="146" text-anchor="middle" class="t">采样纹理</text>
+  <text x="710" y="164" text-anchor="middle" class="t">计算光照颜色</text>
+
+  <rect x="808" y="90" width="118" height="88" class="fixed2"/>
+  <text x="867" y="122" text-anchor="middle" class="h">Tests</text>
+  <text x="867" y="146" text-anchor="middle" class="t">Depth / Stencil</text>
+  <text x="867" y="164" text-anchor="middle" class="t">Blend</text>
+
+  <rect x="958" y="90" width="112" height="88" class="out"/>
+  <text x="1014" y="122" text-anchor="middle" class="h">Framebuffer</text>
+  <text x="1014" y="146" text-anchor="middle" class="t">Color</text>
+  <text x="1014" y="164" text-anchor="middle" class="t">Depth</text>
+
+  <path d="M150 134 L176 134" class="a"/>
+  <path d="M314 134 L340 134" class="a"/>
+  <path d="M464 134 L490 134" class="a"/>
+  <path d="M614 134 L640 134" class="a"/>
+  <path d="M778 134 L804 134" class="a"/>
+  <path d="M928 134 L954 134" class="a"/>
+
+  <rect x="180" y="230" width="132" height="30" class="programmable"/>
+  <text x="246" y="250" text-anchor="middle" class="legend">可编程 Shader</text>
+  <rect x="344" y="230" width="132" height="30" class="fixed2"/>
+  <text x="410" y="250" text-anchor="middle" class="legend">固定功能硬件</text>
+  <rect x="510" y="230" width="132" height="30" class="out"/>
+  <text x="576" y="250" text-anchor="middle" class="legend">渲染目标</text>
+</svg>

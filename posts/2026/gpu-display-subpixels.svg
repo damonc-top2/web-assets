@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg"  role="img" aria-label="像素和 RGB 子像素成像" viewBox="0 0 960 420" width="800" height="350" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style>
+      .panel{fill:#111827;stroke:#334155;stroke-width:3;rx:20}
+      .pixel{fill:#1e293b;stroke:#64748b;stroke-width:2}
+      .r{fill:#ef4444}
+      .g{fill:#22c55e}
+      .b{fill:#3b82f6}
+      .h{font:700 17px sans-serif;fill:#f8fafc}
+      .t{font:13px sans-serif;fill:#cbd5e1}
+      .dark{font:13px sans-serif;fill:#334155}
+      .eye{fill:#f8fafc;stroke:#94a3b8;stroke-width:2}
+      .ray{stroke:#fbbf24;stroke-width:2;opacity:.8}
+    </style>
+  </defs>
+
+  <rect x="70" y="58" width="390" height="276" class="panel"/>
+  <text x="265" y="92" text-anchor="middle" class="h">Display Panel</text>
+
+  <g transform="translate(120,122)">
+    <rect x="0" y="0" width="72" height="96" class="pixel"/>
+    <rect x="8" y="10" width="16" height="76" class="r"/>
+    <rect x="28" y="10" width="16" height="76" class="g"/>
+    <rect x="48" y="10" width="16" height="76" class="b"/>
+    <rect x="86" y="0" width="72" height="96" class="pixel"/>
+    <rect x="94" y="10" width="16" height="76" class="r" opacity=".65"/>
+    <rect x="114" y="10" width="16" height="76" class="g" opacity=".9"/>
+    <rect x="134" y="10" width="16" height="76" class="b" opacity=".3"/>
+    <rect x="172" y="0" width="72" height="96" class="pixel"/>
+    <rect x="180" y="10" width="16" height="76" class="r" opacity=".2"/>
+    <rect x="200" y="10" width="16" height="76" class="g" opacity=".55"/>
+    <rect x="220" y="10" width="16" height="76" class="b"/>
+
+    <rect x="0" y="112" width="72" height="96" class="pixel"/>
+    <rect x="8" y="122" width="16" height="76" class="r" opacity=".95"/>
+    <rect x="28" y="122" width="16" height="76" class="g" opacity=".25"/>
+    <rect x="48" y="122" width="16" height="76" class="b" opacity=".2"/>
+    <rect x="86" y="112" width="72" height="96" class="pixel"/>
+    <rect x="94" y="122" width="16" height="76" class="r" opacity=".85"/>
+    <rect x="114" y="122" width="16" height="76" class="g" opacity=".8"/>
+    <rect x="134" y="122" width="16" height="76" class="b" opacity=".75"/>
+    <rect x="172" y="112" width="72" height="96" class="pixel"/>
+    <rect x="180" y="122" width="16" height="76" class="r" opacity=".15"/>
+    <rect x="200" y="122" width="16" height="76" class="g" opacity=".2"/>
+    <rect x="220" y="122" width="16" height="76" class="b" opacity=".2"/>
+  </g>
+
+  <g transform="translate(585,110)">
+    <ellipse cx="150" cy="90" rx="88" ry="54" class="eye"/>
+    <circle cx="150" cy="90" r="28" fill="#0f172a"/>
+    <circle cx="160" cy="80" r="8" fill="#f8fafc"/>
+    <path d="M0 38 C52 58 82 66 118 80" class="ray"/>
+    <path d="M0 92 C54 91 84 90 118 90" class="ray"/>
+    <path d="M0 150 C52 122 86 110 118 100" class="ray"/>
+    <text x="150" y="180" text-anchor="middle" class="dark">人眼把高密度 RGB 子像素融合成连续图像</text>
+  </g>
+
+  <text x="265" y="364" text-anchor="middle" class="t">一个逻辑像素由多个物理子像素组成</text>
+</svg>

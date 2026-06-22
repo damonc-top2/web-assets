@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="统一着色器架构调度示意" viewBox="0 0 1120 500" width="900" height="402" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow-unified" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .panel{fill:#ffffff;stroke:#cbd5e1;stroke-width:2;rx:18}
+      .old{fill:#fef2f2;stroke:#ef4444;stroke-width:2;rx:12}
+      .new{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:12}
+      .task{fill:#f1f5f9;stroke:#64748b;stroke-width:2;rx:12}
+      .title{font:700 21px sans-serif;fill:#0f172a}
+      .h{font:700 15px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .muted{font:12px sans-serif;fill:#64748b}
+      .arrow{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow-unified)}
+    </style>
+  </defs>
+
+  <rect width="1120" height="500" class="bg"/>
+  <text x="560" y="42" text-anchor="middle" class="title">统一着色器：不同 Shader 阶段竞争同一批执行资源</text>
+
+  <rect x="50" y="88" width="470" height="330" class="panel"/>
+  <text x="285" y="124" text-anchor="middle" class="h">分离式资源</text>
+  <text x="285" y="148" text-anchor="middle" class="muted">顶点和像素硬件比例固定，负载不均会浪费</text>
+
+  <rect x="98" y="196" width="160" height="86" class="old"/>
+  <text x="178" y="226" text-anchor="middle" class="h">Vertex Units</text>
+  <text x="178" y="250" text-anchor="middle" class="t">顶点任务专用</text>
+  <text x="178" y="268" text-anchor="middle" class="t">空闲时难以帮忙</text>
+
+  <rect x="312" y="196" width="160" height="86" class="old"/>
+  <text x="392" y="226" text-anchor="middle" class="h">Pixel Units</text>
+  <text x="392" y="250" text-anchor="middle" class="t">像素任务专用</text>
+  <text x="392" y="268" text-anchor="middle" class="t">高分辨率易打满</text>
+
+  <rect x="600" y="88" width="470" height="330" class="panel"/>
+  <text x="835" y="124" text-anchor="middle" class="h">统一调度</text>
+  <text x="835" y="148" text-anchor="middle" class="muted">Vertex / Pixel / Compute 等任务映射到通用 Shader Core</text>
+
+  <rect x="632" y="182" width="92" height="60" class="task"/>
+  <text x="678" y="217" text-anchor="middle" class="t">VS</text>
+  <rect x="632" y="264" width="92" height="60" class="task"/>
+  <text x="678" y="299" text-anchor="middle" class="t">PS</text>
+  <rect x="632" y="346" width="92" height="44" class="task"/>
+  <text x="678" y="374" text-anchor="middle" class="t">CS</text>
+
+  <rect x="796" y="178" width="92" height="66" class="new"/>
+  <text x="842" y="205" text-anchor="middle" class="h">Core</text>
+  <text x="842" y="225" text-anchor="middle" class="t">SIMT</text>
+  <rect x="914" y="178" width="92" height="66" class="new"/>
+  <text x="960" y="205" text-anchor="middle" class="h">Core</text>
+  <text x="960" y="225" text-anchor="middle" class="t">ALU</text>
+  <rect x="796" y="270" width="92" height="66" class="new"/>
+  <text x="842" y="297" text-anchor="middle" class="h">Core</text>
+  <text x="842" y="317" text-anchor="middle" class="t">Warp</text>
+  <rect x="914" y="270" width="92" height="66" class="new"/>
+  <text x="960" y="297" text-anchor="middle" class="h">Core</text>
+  <text x="960" y="317" text-anchor="middle" class="t">Wave</text>
+
+  <path d="M726 212 L792 212" class="arrow"/>
+  <path d="M726 294 L792 294" class="arrow"/>
+  <path d="M726 368 C780 368 812 344 838 338" class="arrow"/>
+  <path d="M888 212 L910 212" class="arrow"/>
+  <path d="M888 304 L910 304" class="arrow"/>
+
+  <text x="560" y="460" text-anchor="middle" class="muted">结果：GPU 利用率更灵活，但 Pass、纹理、带宽、分支和寄存器都会竞争同一套执行预算。</text>
+</svg>

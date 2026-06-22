@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg"  role="img" aria-label="帧缓冲和后处理链" viewBox="0 0 980 420" width="800" height="343" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow6" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .rt{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:12}
+      .depth{fill:#f5f3ff;stroke:#7c3aed;stroke-width:2;rx:12}
+      .post{fill:#fff7ed;stroke:#f97316;stroke-width:2;rx:12}
+      .swap{fill:#ecfdf5;stroke:#10b981;stroke-width:2;rx:12}
+      .h{font:700 15px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .a{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow6)}
+    </style>
+  </defs>
+
+  <rect x="54" y="74" width="150" height="80" class="rt"/>
+  <text x="129" y="106" text-anchor="middle" class="h">Camera Color</text>
+  <text x="129" y="130" text-anchor="middle" class="t">HDR RGBA16F</text>
+
+  <rect x="54" y="190" width="150" height="80" class="depth"/>
+  <text x="129" y="222" text-anchor="middle" class="h">Camera Depth</text>
+  <text x="129" y="246" text-anchor="middle" class="t">Depth / Stencil</text>
+
+  <rect x="274" y="74" width="130" height="80" class="post"/>
+  <text x="339" y="106" text-anchor="middle" class="h">Bloom</text>
+  <text x="339" y="130" text-anchor="middle" class="t">bright pass</text>
+
+  <rect x="274" y="190" width="130" height="80" class="post"/>
+  <text x="339" y="222" text-anchor="middle" class="h">SSAO / SSR</text>
+  <text x="339" y="246" text-anchor="middle" class="t">screen space</text>
+
+  <rect x="474" y="132" width="150" height="80" class="post"/>
+  <text x="549" y="164" text-anchor="middle" class="h">Tone Mapping</text>
+  <text x="549" y="188" text-anchor="middle" class="t">HDR -> SDR/HDR</text>
+
+  <rect x="694" y="74" width="105" height="80" class="swap"/>
+  <text x="746" y="106" text-anchor="middle" class="h">Back</text>
+  <text x="746" y="130" text-anchor="middle" class="t">Buffer A</text>
+
+  <rect x="818" y="74" width="105" height="80" class="swap"/>
+  <text x="870" y="106" text-anchor="middle" class="h">Front</text>
+  <text x="870" y="130" text-anchor="middle" class="t">Buffer B</text>
+
+  <rect x="756" y="238" width="105" height="80" class="swap"/>
+  <text x="808" y="270" text-anchor="middle" class="h">Present</text>
+  <text x="808" y="294" text-anchor="middle" class="t">swap / flip</text>
+
+  <path d="M206 114 L270 114" class="a"/>
+  <path d="M206 230 L270 230" class="a"/>
+  <path d="M406 114 L470 160" class="a"/>
+  <path d="M406 230 L470 188" class="a"/>
+  <path d="M626 172 L690 118" class="a"/>
+  <path d="M800 114 L814 114" class="a"/>
+  <path d="M808 156 L808 234" class="a"/>
+</svg>

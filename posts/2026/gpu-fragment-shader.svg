@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg"  role="img" aria-label="片元着色器输入和输出" viewBox="0 0 980 430" width="800" height="351" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .panel{fill:#f8fafc;stroke:#94a3b8;stroke-width:2;rx:16}
+      .shader{fill:#111827;stroke:#334155;stroke-width:3;rx:20}
+      .tex{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:10}
+      .light{fill:#fff7ed;stroke:#f97316;stroke-width:2;rx:10}
+      .out{fill:#ecfdf5;stroke:#10b981;stroke-width:2;rx:10}
+      .h{font:700 16px sans-serif;fill:#0f172a}
+      .w{font:700 17px sans-serif;fill:#f8fafc}
+      .t{font:13px sans-serif;fill:#334155}
+      .tw{font:13px sans-serif;fill:#cbd5e1}
+      .a{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow4)}
+    </style>
+  </defs>
+
+  <rect x="44" y="58" width="235" height="290" class="panel"/>
+  <text x="162" y="92" text-anchor="middle" class="h">Interpolated Inputs</text>
+  <text x="76" y="132" class="t">UV</text>
+  <text x="76" y="162" class="t">World Position</text>
+  <text x="76" y="192" class="t">Normal / Tangent</text>
+  <text x="76" y="222" class="t">Vertex Color</text>
+  <text x="76" y="252" class="t">Depth</text>
+
+  <rect x="330" y="72" width="120" height="50" class="tex"/>
+  <text x="390" y="102" text-anchor="middle" class="t">Albedo</text>
+  <rect x="330" y="140" width="120" height="50" class="tex"/>
+  <text x="390" y="170" text-anchor="middle" class="t">Normal Map</text>
+  <rect x="330" y="208" width="120" height="50" class="tex"/>
+  <text x="390" y="238" text-anchor="middle" class="t">Roughness</text>
+  <rect x="330" y="276" width="120" height="50" class="light"/>
+  <text x="390" y="306" text-anchor="middle" class="t">Light / Shadow</text>
+
+  <rect x="520" y="88" width="190" height="220" class="shader"/>
+  <text x="615" y="130" text-anchor="middle" class="w">Fragment Shader</text>
+  <text x="615" y="170" text-anchor="middle" class="tw">Texture Sampling</text>
+  <text x="615" y="200" text-anchor="middle" class="tw">BRDF / Lighting</text>
+  <text x="615" y="230" text-anchor="middle" class="tw">Alpha Clip</text>
+  <text x="615" y="260" text-anchor="middle" class="tw">Output Color</text>
+
+  <rect x="780" y="100" width="140" height="70" class="out"/>
+  <text x="850" y="130" text-anchor="middle" class="h">Color</text>
+  <text x="850" y="154" text-anchor="middle" class="t">RGBA</text>
+  <rect x="780" y="210" width="140" height="70" class="out"/>
+  <text x="850" y="240" text-anchor="middle" class="h">Depth</text>
+  <text x="850" y="264" text-anchor="middle" class="t">optional write</text>
+
+  <path d="M280 203 L516 203" class="a"/>
+  <path d="M452 97 L516 150" class="a"/>
+  <path d="M452 165 L516 181" class="a"/>
+  <path d="M452 233 L516 215" class="a"/>
+  <path d="M452 301 L516 250" class="a"/>
+  <path d="M712 160 L776 135" class="a"/>
+  <path d="M712 235 L776 245" class="a"/>
+</svg>

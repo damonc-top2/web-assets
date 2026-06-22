@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Compute Shader 的 Buffer 和 Texture 数据流" viewBox="0 0 1120 460" width="900" height="370" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow-compute-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .res{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:14}
+      .compute{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:18}
+      .queue{fill:#fff7ed;stroke:#f97316;stroke-width:2;rx:14}
+      .title{font:700 21px sans-serif;fill:#0f172a}
+      .h{font:700 14px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .muted{font:12px sans-serif;fill:#64748b}
+      .arrow{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow-compute-flow)}
+      .barrier{stroke:#ef4444;stroke-width:3;fill:none;stroke-dasharray:8 6}
+    </style>
+  </defs>
+
+  <rect width="1120" height="460" class="bg"/>
+  <text x="560" y="42" text-anchor="middle" class="title">Compute Shader：不是画三角形，而是显式读写 GPU 资源</text>
+
+  <rect x="62" y="112" width="160" height="78" class="res"/>
+  <text x="142" y="142" text-anchor="middle" class="h">StructuredBuffer</text>
+  <text x="142" y="166" text-anchor="middle" class="t">实例 / 光源 / 粒子</text>
+
+  <rect x="62" y="252" width="160" height="78" class="res"/>
+  <text x="142" y="282" text-anchor="middle" class="h">Texture</text>
+  <text x="142" y="306" text-anchor="middle" class="t">Depth / Color / Hi-Z</text>
+
+  <rect x="310" y="158" width="260" height="132" class="compute"/>
+  <text x="440" y="195" text-anchor="middle" class="h">Compute Shader Dispatch</text>
+  <text x="440" y="224" text-anchor="middle" class="t">Thread Groups</text>
+  <text x="440" y="248" text-anchor="middle" class="t">Group Shared Memory</text>
+  <text x="440" y="272" text-anchor="middle" class="t">RWBuffer / RWTexture 写入</text>
+
+  <rect x="678" y="112" width="170" height="78" class="res"/>
+  <text x="763" y="142" text-anchor="middle" class="h">RWBuffer</text>
+  <text x="763" y="166" text-anchor="middle" class="t">可见实例 / DrawArgs</text>
+
+  <rect x="678" y="252" width="170" height="78" class="res"/>
+  <text x="763" y="282" text-anchor="middle" class="h">RWTexture</text>
+  <text x="763" y="306" text-anchor="middle" class="t">后处理 / 降噪结果</text>
+
+  <rect x="930" y="182" width="138" height="96" class="queue"/>
+  <text x="999" y="214" text-anchor="middle" class="h">Graphics Pass</text>
+  <text x="999" y="238" text-anchor="middle" class="t">Draw / Fullscreen</text>
+  <text x="999" y="260" text-anchor="middle" class="t">消费结果</text>
+
+  <path d="M224 151 C258 158 280 178 306 204" class="arrow"/>
+  <path d="M224 291 C258 286 282 266 306 244" class="arrow"/>
+  <path d="M572 202 C610 184 638 164 674 152" class="arrow"/>
+  <path d="M572 248 C610 266 638 286 674 292" class="arrow"/>
+  <path d="M850 151 C895 154 922 180 946 202" class="arrow"/>
+  <path d="M850 292 C895 288 922 260 946 244" class="arrow"/>
+
+  <path d="M884 96 L884 356" class="barrier"/>
+  <text x="884" y="384" text-anchor="middle" class="muted">需要正确的资源状态和同步，否则读到旧数据或产生 pipeline bubble</text>
+</svg>

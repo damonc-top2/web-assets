@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="固定功能管线的状态输入示意" viewBox="0 0 1120 460" width="900" height="370" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow-fixed-state" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .state{fill:#fff7ed;stroke:#f97316;stroke-width:2;rx:14}
+      .fixed{fill:#f5f3ff;stroke:#7c3aed;stroke-width:2;rx:14}
+      .out{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:14}
+      .title{font:700 21px sans-serif;fill:#0f172a}
+      .h{font:700 14px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .muted{font:12px sans-serif;fill:#64748b}
+      .arrow{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow-fixed-state)}
+      .dash{stroke:#94a3b8;stroke-width:2;stroke-dasharray:6 6;fill:none;marker-end:url(#arrow-fixed-state)}
+    </style>
+  </defs>
+
+  <rect width="1120" height="460" class="bg"/>
+  <text x="560" y="42" text-anchor="middle" class="title">固定管线：开发者配置状态，硬件执行预设算法</text>
+
+  <rect x="70" y="96" width="150" height="74" class="state"/>
+  <text x="145" y="124" text-anchor="middle" class="h">Transform State</text>
+  <text x="145" y="148" text-anchor="middle" class="t">World / View / Proj</text>
+
+  <rect x="70" y="198" width="150" height="74" class="state"/>
+  <text x="145" y="226" text-anchor="middle" class="h">Light State</text>
+  <text x="145" y="250" text-anchor="middle" class="t">方向 / 颜色 / 强度</text>
+
+  <rect x="70" y="300" width="150" height="74" class="state"/>
+  <text x="145" y="328" text-anchor="middle" class="h">Texture State</text>
+  <text x="145" y="352" text-anchor="middle" class="t">Stage / Combiner</text>
+
+  <rect x="326" y="148" width="150" height="74" class="fixed"/>
+  <text x="401" y="176" text-anchor="middle" class="h">Fixed Transform</text>
+  <text x="401" y="200" text-anchor="middle" class="t">顶点变换</text>
+
+  <rect x="548" y="148" width="150" height="74" class="fixed"/>
+  <text x="623" y="176" text-anchor="middle" class="h">Fixed Lighting</text>
+  <text x="623" y="200" text-anchor="middle" class="t">预设光照模型</text>
+
+  <rect x="770" y="148" width="150" height="74" class="fixed"/>
+  <text x="845" y="176" text-anchor="middle" class="h">Fixed Combine</text>
+  <text x="845" y="200" text-anchor="middle" class="t">纹理组合规则</text>
+
+  <rect x="770" y="300" width="150" height="74" class="out"/>
+  <text x="845" y="328" text-anchor="middle" class="h">Framebuffer</text>
+  <text x="845" y="352" text-anchor="middle" class="t">Color / Depth</text>
+
+  <path d="M222 133 C268 135 288 166 322 180" class="arrow"/>
+  <path d="M222 235 C304 236 468 204 544 188" class="arrow"/>
+  <path d="M222 337 C410 342 612 246 766 194" class="arrow"/>
+  <path d="M478 185 L544 185" class="arrow"/>
+  <path d="M700 185 L766 185" class="arrow"/>
+  <path d="M845 224 L845 296" class="arrow"/>
+
+  <path d="M328 292 C420 260 498 254 580 276" class="dash"/>
+  <text x="470" y="316" text-anchor="middle" class="muted">算法路径固定，只能通过状态改变输入参数</text>
+</svg>

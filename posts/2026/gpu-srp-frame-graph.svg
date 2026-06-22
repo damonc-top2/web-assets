@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Unity SRP 中一帧渲染的 Pass 和资源组织" viewBox="0 0 1160 560" width="900" height="434" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow-srp" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .pass{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:14}
+      .res{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:14}
+      .cpu{fill:#fff7ed;stroke:#f97316;stroke-width:2;rx:14}
+      .title{font:700 21px sans-serif;fill:#0f172a}
+      .h{font:700 14px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .muted{font:12px sans-serif;fill:#64748b}
+      .arrow{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow-srp)}
+      .read{stroke:#64748b;stroke-width:2;stroke-dasharray:6 6;fill:none;marker-end:url(#arrow-srp)}
+    </style>
+  </defs>
+
+  <rect width="1160" height="560" class="bg"/>
+  <text x="580" y="42" text-anchor="middle" class="title">SRP 让“画一帧”变成显式的 Pass 和资源调度问题</text>
+
+  <rect x="52" y="92" width="150" height="70" class="cpu"/>
+  <text x="127" y="120" text-anchor="middle" class="h">Culling</text>
+  <text x="127" y="142" text-anchor="middle" class="t">相机 / 可见物</text>
+
+  <rect x="252" y="92" width="150" height="70" class="pass"/>
+  <text x="327" y="120" text-anchor="middle" class="h">Shadow Pass</text>
+  <text x="327" y="142" text-anchor="middle" class="t">Light View</text>
+
+  <rect x="452" y="92" width="150" height="70" class="res"/>
+  <text x="527" y="120" text-anchor="middle" class="h">Shadow Map</text>
+  <text x="527" y="142" text-anchor="middle" class="t">Depth Texture</text>
+
+  <rect x="252" y="234" width="150" height="70" class="pass"/>
+  <text x="327" y="262" text-anchor="middle" class="h">Depth Pass</text>
+  <text x="327" y="284" text-anchor="middle" class="t">Early-Z / Hi-Z</text>
+
+  <rect x="452" y="234" width="150" height="70" class="res"/>
+  <text x="527" y="262" text-anchor="middle" class="h">Depth Buffer</text>
+  <text x="527" y="284" text-anchor="middle" class="t">Camera Depth</text>
+
+  <rect x="652" y="164" width="150" height="70" class="pass"/>
+  <text x="727" y="192" text-anchor="middle" class="h">Opaque Pass</text>
+  <text x="727" y="214" text-anchor="middle" class="t">Shader / Material</text>
+
+  <rect x="852" y="164" width="150" height="70" class="res"/>
+  <text x="927" y="192" text-anchor="middle" class="h">Color RT</text>
+  <text x="927" y="214" text-anchor="middle" class="t">HDR / LDR</text>
+
+  <rect x="652" y="330" width="150" height="70" class="pass"/>
+  <text x="727" y="358" text-anchor="middle" class="h">Post Process</text>
+  <text x="727" y="380" text-anchor="middle" class="t">Bloom / TAA</text>
+
+  <rect x="852" y="330" width="150" height="70" class="res"/>
+  <text x="927" y="358" text-anchor="middle" class="h">Back Buffer</text>
+  <text x="927" y="380" text-anchor="middle" class="t">Present</text>
+
+  <path d="M204 127 L248 127" class="arrow"/>
+  <path d="M404 127 L448 127" class="arrow"/>
+  <path d="M204 143 C228 198 238 238 248 258" class="arrow"/>
+  <path d="M404 269 L448 269" class="arrow"/>
+  <path d="M604 127 C650 130 675 150 704 162" class="read"/>
+  <path d="M604 269 C640 245 668 226 704 212" class="read"/>
+  <path d="M804 199 L848 199" class="arrow"/>
+  <path d="M927 236 C927 280 866 308 790 340" class="read"/>
+  <path d="M804 365 L848 365" class="arrow"/>
+
+  <text x="580" y="494" text-anchor="middle" class="muted">C# 组织 Pass、排序和资源生命周期；Shader 只负责每个 Pass 内部的 GPU 计算。</text>
+</svg>
