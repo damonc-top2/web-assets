@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+  <title id="title">Shader variant multiplication</title>
+  <desc id="desc">Keyword groups, passes, render pipelines and platforms multiply the number of shader variants.</desc>
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8F1FF"/>
+      <stop offset="100%" stop-color="#CFE0FF"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF2D8"/>
+      <stop offset="100%" stop-color="#FFD79B"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-15%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1F2937" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#64748B"/>
+    </marker>
+    <style>
+      .bg { fill: #F8FAFC; }
+      .panel { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 1.5; filter: url(#shadow); }
+      .box { fill: url(#blue); stroke: #7AA2E3; stroke-width: 1.5; }
+      .box2 { fill: url(#orange); stroke: #D99231; stroke-width: 1.5; }
+      .tiny { fill: #EEF2FF; stroke: #94A3B8; stroke-width: 1; }
+      .title { font: 700 26px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0F172A; }
+      .label { font: 700 17px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #172554; }
+      .text { font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+      .math { font: 700 21px "SFMono-Regular", Consolas, monospace; fill: #0F172A; }
+      .muted { font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #64748B; }
+      .arrow { stroke: #64748B; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .danger { fill: #BE123C; font: 700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="920" height="520" rx="28"/>
+  <text class="title" x="44" y="54">变体不是相加，而是按维度相乘</text>
+  <text class="text" x="44" y="82">一个 Shader 源文件会沿着关键字、Pass、管线、平台和光照路径展开成多个 GPU 程序。</text>
+
+  <rect class="panel" x="42" y="118" width="836" height="190" rx="24"/>
+
+  <rect class="box" x="72" y="158" width="130" height="90" rx="18"/>
+  <text class="label" x="95" y="190">材质开关</text>
+  <text class="math" x="103" y="222">2 x 2</text>
+  <text class="muted" x="84" y="270">NORMAL / EMISSION</text>
+
+  <line class="arrow" x1="215" y1="203" x2="271" y2="203"/>
+
+  <rect class="box" x="286" y="158" width="130" height="90" rx="18"/>
+  <text class="label" x="318" y="190">光照组</text>
+  <text class="math" x="323" y="222">3 x 2</text>
+  <text class="muted" x="298" y="270">主光 / 阴影</text>
+
+  <line class="arrow" x1="429" y1="203" x2="485" y2="203"/>
+
+  <rect class="box" x="500" y="158" width="130" height="90" rx="18"/>
+  <text class="label" x="540" y="190">Pass</text>
+  <text class="math" x="550" y="222">x 4</text>
+  <text class="muted" x="522" y="270">Forward / Shadow</text>
+
+  <line class="arrow" x1="643" y1="203" x2="699" y2="203"/>
+
+  <rect class="box2" x="714" y="158" width="130" height="90" rx="18"/>
+  <text class="label" x="750" y="190">平台</text>
+  <text class="math" x="764" y="222">x 3</text>
+  <text class="muted" x="740" y="270">DX / Metal / Vulkan</text>
+
+  <text class="math" x="127" y="352">4 x 6 x 4 x 3 = 288</text>
+  <text class="danger" x="398" y="352">个候选程序</text>
+  <text class="text" x="44" y="386">真实项目里还会叠加 LightMode、Instancing、Fog、XR、Quality、Renderer Feature、Shadow 模式等维度。</text>
+
+  <g transform="translate(55 420)">
+    <rect class="tiny" x="0" y="0" width="34" height="28" rx="6"/>
+    <rect class="tiny" x="44" y="0" width="34" height="28" rx="6"/>
+    <rect class="tiny" x="88" y="0" width="34" height="28" rx="6"/>
+    <rect class="tiny" x="132" y="0" width="34" height="28" rx="6"/>
+    <text class="muted" x="182" y="19">每个小格都可能需要独立编译、打包、加载或被裁剪。</text>
+  </g>
+</svg>

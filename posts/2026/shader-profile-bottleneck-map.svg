@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Shader 性能瓶颈判定图" viewBox="0 0 1180 660" width="900" height="503" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow-profile-map" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .title{font:700 25px sans-serif;fill:#0f172a}
+      .sub{font:13px sans-serif;fill:#64748b}
+      .card{fill:#ffffff;stroke:#cbd5e1;stroke-width:1.5;rx:16}
+      .cpu{fill:#dbeafe;stroke:#2563eb;stroke-width:2;rx:14}
+      .gpu{fill:#dcfce7;stroke:#16a34a;stroke-width:2;rx:14}
+      .mem{fill:#fef3c7;stroke:#d97706;stroke-width:2;rx:14}
+      .sync{fill:#fee2e2;stroke:#ef4444;stroke-width:2;rx:14}
+      .present{fill:#ffedd5;stroke:#f97316;stroke-width:2;rx:14}
+      .h{font:700 16px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .small{font:12px sans-serif;fill:#64748b}
+      .line{stroke:#475569;stroke-width:1.8;fill:none;marker-end:url(#arrow-profile-map)}
+      .dash{stroke:#94a3b8;stroke-width:1.5;stroke-dasharray:6 5;fill:none}
+      .tag{fill:#ffffff;stroke:#cbd5e1;stroke-width:1.2;rx:10}
+    </style>
+  </defs>
+
+  <rect width="1180" height="660" class="bg"/>
+  <text x="590" y="44" text-anchor="middle" class="title">从症状到瓶颈：先看变化趋势，再看单帧细节</text>
+  <text x="590" y="72" text-anchor="middle" class="sub">同一场景只改一个变量，GPU 时间的响应方向比单个 marker 名称更可靠。</text>
+
+  <rect x="448" y="104" width="284" height="86" class="card"/>
+  <text x="590" y="136" text-anchor="middle" class="h">帧时间超预算</text>
+  <text x="590" y="162" text-anchor="middle" class="t">先排除 VSync、帧率上限、Editor 干扰</text>
+
+  <rect x="94" y="256" width="214" height="126" class="cpu"/>
+  <text x="201" y="288" text-anchor="middle" class="h">CPU Main</text>
+  <text x="201" y="316" text-anchor="middle" class="t">Update / Animation / Physics</text>
+  <text x="201" y="340" text-anchor="middle" class="t">Culling / Script marker 高</text>
+  <text x="201" y="364" text-anchor="middle" class="small">降分辨率无变化</text>
+
+  <rect x="342" y="256" width="214" height="126" class="cpu"/>
+  <text x="449" y="288" text-anchor="middle" class="h">CPU Render</text>
+  <text x="449" y="316" text-anchor="middle" class="t">SetPass / Draw 提交</text>
+  <text x="449" y="340" text-anchor="middle" class="t">状态切换、批次数、SRP Pass</text>
+  <text x="449" y="364" text-anchor="middle" class="small">GPU 不满，Render Thread 满</text>
+
+  <rect x="590" y="242" width="224" height="154" class="gpu"/>
+  <text x="702" y="276" text-anchor="middle" class="h">GPU Shader</text>
+  <text x="702" y="304" text-anchor="middle" class="t">顶点、片元、纹理采样</text>
+  <text x="702" y="328" text-anchor="middle" class="t">随 LOD、分辨率、overdraw 变化</text>
+  <text x="702" y="352" text-anchor="middle" class="small">用 A/B 材质和 Render Scale 验证</text>
+
+  <rect x="848" y="242" width="238" height="154" class="mem"/>
+  <text x="967" y="276" text-anchor="middle" class="h">带宽 / ROP</text>
+  <text x="967" y="304" text-anchor="middle" class="t">MSAA、HDR、Blend、后处理</text>
+  <text x="967" y="328" text-anchor="middle" class="t">Render Target 读写过重</text>
+  <text x="967" y="352" text-anchor="middle" class="small">降格式或关全屏 Pass 明显下降</text>
+
+  <rect x="280" y="458" width="256" height="114" class="sync"/>
+  <text x="408" y="492" text-anchor="middle" class="h">同步等待</text>
+  <text x="408" y="520" text-anchor="middle" class="t">ReadPixels / GetData / Fence</text>
+  <text x="408" y="544" text-anchor="middle" class="small">CPU marker 是等待，根因常在 GPU 队列</text>
+
+  <rect x="642" y="458" width="256" height="114" class="present"/>
+  <text x="770" y="492" text-anchor="middle" class="h">Present / VSync</text>
+  <text x="770" y="520" text-anchor="middle" class="t">Gfx.PresentFrame / WaitForTargetFPS</text>
+  <text x="770" y="544" text-anchor="middle" class="small">帧率被显示节奏锁住，不等于 Shader 慢</text>
+
+  <path d="M506 190 C406 210 286 234 218 256" class="line"/>
+  <path d="M548 190 C518 214 480 232 458 256" class="line"/>
+  <path d="M632 190 C662 214 686 228 696 242" class="line"/>
+  <path d="M680 190 C788 218 886 228 950 242" class="line"/>
+  <path d="M448 382 C432 408 420 432 412 458" class="line"/>
+  <path d="M790 396 C784 418 778 436 774 458" class="line"/>
+
+  <path d="M700 396 C646 428 548 446 492 458" class="dash"/>
+  <path d="M966 396 C910 424 840 442 802 458" class="dash"/>
+
+  <rect x="72" y="602" width="274" height="34" class="tag"/>
+  <text x="209" y="624" text-anchor="middle" class="small">顶点瓶颈：降 mesh / LOD 后 GPU 时间下降</text>
+  <rect x="370" y="602" width="260" height="34" class="tag"/>
+  <text x="500" y="624" text-anchor="middle" class="small">片元瓶颈：降 Render Scale 后下降</text>
+  <rect x="654" y="602" width="246" height="34" class="tag"/>
+  <text x="777" y="624" text-anchor="middle" class="small">纹理瓶颈：纯色与贴图差异大</text>
+  <rect x="924" y="602" width="206" height="34" class="tag"/>
+  <text x="1027" y="624" text-anchor="middle" class="small">带宽瓶颈：格式/Blend/MSAA 敏感</text>
+</svg>

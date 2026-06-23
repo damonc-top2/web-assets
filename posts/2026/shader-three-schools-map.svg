@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Unity 三大 Shader 流派总览" viewBox="0 0 1200 650" width="900" height="488" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow-three-schools" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <linearGradient id="vf-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="surface-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/>
+      <stop offset="1" stop-color="#ffedd5"/>
+    </linearGradient>
+    <linearGradient id="compute-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ecfdf5"/>
+      <stop offset="1" stop-color="#d1fae5"/>
+    </linearGradient>
+    <style>
+      .bg{fill:#f8fafc}
+      .title{font:700 25px sans-serif;fill:#0f172a}
+      .subtitle{font:14px sans-serif;fill:#64748b}
+      .card-title{font:700 22px sans-serif;fill:#0f172a}
+      .card-sub{font:700 14px sans-serif;fill:#334155}
+      .body{font:13px sans-serif;fill:#334155}
+      .small{font:12px sans-serif;fill:#64748b}
+      .vf{fill:url(#vf-grad);stroke:#2563eb;stroke-width:2;rx:22}
+      .surface{fill:url(#surface-grad);stroke:#f97316;stroke-width:2;rx:22}
+      .compute{fill:url(#compute-grad);stroke:#059669;stroke-width:2;rx:22}
+      .chip{fill:#ffffff;stroke:#cbd5e1;stroke-width:1.5;rx:13}
+      .pipe{fill:#ffffff;stroke:#94a3b8;stroke-width:1.5;rx:12}
+      .arrow{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow-three-schools)}
+    </style>
+  </defs>
+
+  <rect width="1200" height="650" class="bg"/>
+  <text x="600" y="44" text-anchor="middle" class="title">三大 Shader 流派不是等级，而是三个不同的工程入口</text>
+  <text x="600" y="72" text-anchor="middle" class="subtitle">顶点-片元控制图形管线，Surface 让编译器生成光照 Pass，Compute 绕开绘制管线处理并行数据。</text>
+
+  <rect x="60" y="120" width="320" height="420" class="vf"/>
+  <text x="220" y="160" text-anchor="middle" class="card-title">顶点-片元</text>
+  <text x="220" y="188" text-anchor="middle" class="card-sub">Vertex / Fragment Shader</text>
+  <rect x="96" y="220" width="248" height="42" class="pipe"/>
+  <text x="220" y="247" text-anchor="middle" class="body">Mesh 顶点进入 Vertex</text>
+  <path d="M220 266 L220 294" class="arrow"/>
+  <rect x="96" y="300" width="248" height="42" class="pipe"/>
+  <text x="220" y="327" text-anchor="middle" class="body">Rasterizer 生成片元</text>
+  <path d="M220 346 L220 374" class="arrow"/>
+  <rect x="96" y="380" width="248" height="42" class="pipe"/>
+  <text x="220" y="407" text-anchor="middle" class="body">Fragment 输出候选颜色</text>
+  <text x="220" y="468" text-anchor="middle" class="small">强控制：Pass、Tags、插值、深度、混合</text>
+  <text x="220" y="492" text-anchor="middle" class="small">适合：特效、屏幕绘制、SRP 手写材质</text>
+
+  <rect x="440" y="120" width="320" height="420" class="surface"/>
+  <text x="600" y="160" text-anchor="middle" class="card-title">Surface</text>
+  <text x="600" y="188" text-anchor="middle" class="card-sub">Built-in Surface Shader</text>
+  <rect x="476" y="220" width="248" height="42" class="pipe"/>
+  <text x="600" y="247" text-anchor="middle" class="body">surf 填充表面属性</text>
+  <path d="M600 266 L600 294" class="arrow"/>
+  <rect x="476" y="300" width="248" height="42" class="pipe"/>
+  <text x="600" y="327" text-anchor="middle" class="body">Unity 编译器生成 Pass</text>
+  <path d="M600 346 L600 374" class="arrow"/>
+  <rect x="476" y="380" width="248" height="42" class="pipe"/>
+  <text x="600" y="407" text-anchor="middle" class="body">Forward / Deferred 光照接入</text>
+  <text x="600" y="468" text-anchor="middle" class="small">高产出：少写光照样板代码</text>
+  <text x="600" y="492" text-anchor="middle" class="small">边界：Built-in 资产维护和教学最合适</text>
+
+  <rect x="820" y="120" width="320" height="420" class="compute"/>
+  <text x="980" y="160" text-anchor="middle" class="card-title">Compute</text>
+  <text x="980" y="188" text-anchor="middle" class="card-sub">Compute Shader Dispatch</text>
+  <rect x="856" y="220" width="248" height="42" class="pipe"/>
+  <text x="980" y="247" text-anchor="middle" class="body">Buffer / Texture 输入</text>
+  <path d="M980 266 L980 294" class="arrow"/>
+  <rect x="856" y="300" width="248" height="42" class="pipe"/>
+  <text x="980" y="327" text-anchor="middle" class="body">Thread Groups 并行执行</text>
+  <path d="M980 346 L980 374" class="arrow"/>
+  <rect x="856" y="380" width="248" height="42" class="pipe"/>
+  <text x="980" y="407" text-anchor="middle" class="body">RWBuffer / RWTexture 输出</text>
+  <text x="980" y="468" text-anchor="middle" class="small">强吞吐：数据生成、剔除、后处理</text>
+  <text x="980" y="492" text-anchor="middle" class="small">代价：同步、资源状态、平台能力</text>
+
+  <rect x="100" y="570" width="1000" height="42" class="chip"/>
+  <text x="600" y="596" text-anchor="middle" class="body">判断口径：先问输出是什么，再问谁消费结果。输出颜色通常走顶点-片元或 Surface，输出数据通常走 Compute。</text>
+</svg>

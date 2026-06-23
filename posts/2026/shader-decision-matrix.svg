@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Shader 写法选择矩阵" viewBox="0 0 1180 620" width="900" height="473" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow-decision-matrix" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .title{font:700 24px sans-serif;fill:#0f172a}
+      .subtitle{font:13px sans-serif;fill:#64748b}
+      .axis{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow-decision-matrix)}
+      .grid{stroke:#cbd5e1;stroke-width:1;stroke-dasharray:7 7}
+      .h{font:700 15px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .small{font:12px sans-serif;fill:#64748b}
+      .vf{fill:#dbeafe;stroke:#2563eb;stroke-width:2}
+      .surface{fill:#ffedd5;stroke:#f97316;stroke-width:2}
+      .compute{fill:#d1fae5;stroke:#059669;stroke-width:2}
+      .point{fill:#ffffff;stroke:#334155;stroke-width:1.5}
+      .tag{fill:#ffffff;stroke:#cbd5e1;stroke-width:1.5;rx:12}
+    </style>
+  </defs>
+
+  <rect width="1180" height="620" class="bg"/>
+  <text x="590" y="44" text-anchor="middle" class="title">选择矩阵：按输出目标、管线控制权和并行数据规模决策</text>
+  <text x="590" y="72" text-anchor="middle" class="subtitle">这不是语法偏好。错误入口会让性能分析、迁移和调试都变得昂贵。</text>
+
+  <path d="M132 510 L1040 510" class="axis"/>
+  <path d="M132 510 L132 120" class="axis"/>
+  <text x="1038" y="542" text-anchor="end" class="h">管线控制权 / 可定制 Pass</text>
+  <text x="92" y="126" text-anchor="middle" transform="rotate(-90 92 126)" class="h">并行数据规模 / 非绘制任务</text>
+
+  <path d="M132 380 L1040 380" class="grid"/>
+  <path d="M132 250 L1040 250" class="grid"/>
+  <path d="M435 510 L435 120" class="grid"/>
+  <path d="M738 510 L738 120" class="grid"/>
+
+  <circle cx="720" cy="348" r="104" class="vf"/>
+  <text x="720" y="324" text-anchor="middle" class="h">顶点-片元</text>
+  <text x="720" y="350" text-anchor="middle" class="t">材质、特效、后处理</text>
+  <text x="720" y="374" text-anchor="middle" class="t">需要控制 Pass 和状态</text>
+
+  <circle cx="410" cy="410" r="90" class="surface"/>
+  <text x="410" y="390" text-anchor="middle" class="h">Surface</text>
+  <text x="410" y="416" text-anchor="middle" class="t">Built-in 快速材质</text>
+  <text x="410" y="440" text-anchor="middle" class="t">光照样板少</text>
+
+  <circle cx="838" cy="210" r="112" class="compute"/>
+  <text x="838" y="184" text-anchor="middle" class="h">Compute</text>
+  <text x="838" y="210" text-anchor="middle" class="t">剔除、粒子、图像处理</text>
+  <text x="838" y="234" text-anchor="middle" class="t">输出 Buffer / Texture</text>
+
+  <rect x="176" y="142" width="230" height="44" class="tag"/>
+  <text x="291" y="169" text-anchor="middle" class="small">低控制 + 高并行：通常要重想数据布局</text>
+  <rect x="164" y="546" width="236" height="38" class="tag"/>
+  <text x="282" y="570" text-anchor="middle" class="small">存量 Built-in：Surface 可维护</text>
+  <rect x="732" y="546" width="288" height="38" class="tag"/>
+  <text x="876" y="570" text-anchor="middle" class="small">新 SRP：手写 HLSL Pass 或 Shader Graph</text>
+
+  <circle cx="648" cy="276" r="7" class="point"/>
+  <text x="566" y="278" text-anchor="end" class="small">屏幕空间描边</text>
+  <circle cx="908" cy="166" r="7" class="point"/>
+  <text x="922" y="170" class="small">GPU Culling</text>
+  <circle cx="362" cy="456" r="7" class="point"/>
+  <text x="276" y="460" text-anchor="end" class="small">旧角色 PBR</text>
+  <circle cx="780" cy="432" r="7" class="point"/>
+  <text x="792" y="436" class="small">水面顶点扰动</text>
+</svg>

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Compute Shader Dispatch 线程组和资源" viewBox="0 0 1180 620" width="900" height="473" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow-compute-dispatch" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .title{font:700 24px sans-serif;fill:#0f172a}
+      .subtitle{font:13px sans-serif;fill:#64748b}
+      .h{font:700 15px sans-serif;fill:#0f172a}
+      .t{font:12px sans-serif;fill:#334155}
+      .small{font:12px sans-serif;fill:#64748b}
+      .res{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:14}
+      .grid{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:16}
+      .group{fill:#dbeafe;stroke:#3b82f6;stroke-width:1.5;rx:8}
+      .thread{fill:#ffffff;stroke:#94a3b8;stroke-width:1;rx:3}
+      .barrier{fill:#fef2f2;stroke:#ef4444;stroke-width:2;rx:14}
+      .queue{fill:#fff7ed;stroke:#f97316;stroke-width:2;rx:14}
+      .arrow{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow-compute-dispatch)}
+      .dash{stroke:#ef4444;stroke-width:2.5;fill:none;stroke-dasharray:8 7;marker-end:url(#arrow-compute-dispatch)}
+    </style>
+  </defs>
+
+  <rect width="1180" height="620" class="bg"/>
+  <text x="590" y="44" text-anchor="middle" class="title">Compute Shader：按线程组分发，不按三角形和片元执行</text>
+  <text x="590" y="72" text-anchor="middle" class="subtitle">Dispatch(x,y,z) 创建线程组网格；每个线程用 SV_DispatchThreadID 定位自己负责的数据。</text>
+
+  <rect x="64" y="142" width="180" height="78" class="res"/>
+  <text x="154" y="172" text-anchor="middle" class="h">输入资源</text>
+  <text x="154" y="198" text-anchor="middle" class="t">Buffer / Texture</text>
+  <rect x="64" y="280" width="180" height="78" class="res"/>
+  <text x="154" y="310" text-anchor="middle" class="h">常量参数</text>
+  <text x="154" y="336" text-anchor="middle" class="t">CBUFFER / Kernel Params</text>
+
+  <rect x="332" y="120" width="390" height="300" class="grid"/>
+  <text x="527" y="154" text-anchor="middle" class="h">Dispatch Grid</text>
+  <text x="527" y="178" text-anchor="middle" class="small">4 个线程组示意，每组内部有 numthreads(8,8,1)</text>
+
+  <g transform="translate(382 210)">
+    <rect width="118" height="78" class="group"/>
+    <rect x="14" y="15" width="16" height="14" class="thread"/>
+    <rect x="38" y="15" width="16" height="14" class="thread"/>
+    <rect x="62" y="15" width="16" height="14" class="thread"/>
+    <rect x="86" y="15" width="16" height="14" class="thread"/>
+    <rect x="14" y="42" width="16" height="14" class="thread"/>
+    <rect x="38" y="42" width="16" height="14" class="thread"/>
+    <rect x="62" y="42" width="16" height="14" class="thread"/>
+    <rect x="86" y="42" width="16" height="14" class="thread"/>
+  </g>
+  <g transform="translate(554 210)">
+    <rect width="118" height="78" class="group"/>
+    <rect x="14" y="15" width="16" height="14" class="thread"/>
+    <rect x="38" y="15" width="16" height="14" class="thread"/>
+    <rect x="62" y="15" width="16" height="14" class="thread"/>
+    <rect x="86" y="15" width="16" height="14" class="thread"/>
+    <rect x="14" y="42" width="16" height="14" class="thread"/>
+    <rect x="38" y="42" width="16" height="14" class="thread"/>
+    <rect x="62" y="42" width="16" height="14" class="thread"/>
+    <rect x="86" y="42" width="16" height="14" class="thread"/>
+  </g>
+  <g transform="translate(382 318)">
+    <rect width="118" height="78" class="group"/>
+    <rect x="14" y="15" width="16" height="14" class="thread"/>
+    <rect x="38" y="15" width="16" height="14" class="thread"/>
+    <rect x="62" y="15" width="16" height="14" class="thread"/>
+    <rect x="86" y="15" width="16" height="14" class="thread"/>
+    <rect x="14" y="42" width="16" height="14" class="thread"/>
+    <rect x="38" y="42" width="16" height="14" class="thread"/>
+    <rect x="62" y="42" width="16" height="14" class="thread"/>
+    <rect x="86" y="42" width="16" height="14" class="thread"/>
+  </g>
+  <g transform="translate(554 318)">
+    <rect width="118" height="78" class="group"/>
+    <rect x="14" y="15" width="16" height="14" class="thread"/>
+    <rect x="38" y="15" width="16" height="14" class="thread"/>
+    <rect x="62" y="15" width="16" height="14" class="thread"/>
+    <rect x="86" y="15" width="16" height="14" class="thread"/>
+    <rect x="14" y="42" width="16" height="14" class="thread"/>
+    <rect x="38" y="42" width="16" height="14" class="thread"/>
+    <rect x="62" y="42" width="16" height="14" class="thread"/>
+    <rect x="86" y="42" width="16" height="14" class="thread"/>
+  </g>
+
+  <rect x="814" y="142" width="180" height="78" class="res"/>
+  <text x="904" y="172" text-anchor="middle" class="h">输出资源</text>
+  <text x="904" y="198" text-anchor="middle" class="t">RWBuffer / RWTexture</text>
+  <rect x="814" y="280" width="180" height="78" class="barrier"/>
+  <text x="904" y="310" text-anchor="middle" class="h">同步边界</text>
+  <text x="904" y="336" text-anchor="middle" class="t">Barrier / Fence / AsyncGPUReadback</text>
+  <rect x="1018" y="210" width="120" height="82" class="queue"/>
+  <text x="1078" y="242" text-anchor="middle" class="h">消费者</text>
+  <text x="1078" y="266" text-anchor="middle" class="t">Draw / CPU / Pass</text>
+
+  <path d="M246 181 C282 198 298 218 328 240" class="arrow"/>
+  <path d="M246 319 C282 312 302 292 328 272" class="arrow"/>
+  <path d="M724 240 C758 218 780 198 810 181" class="arrow"/>
+  <path d="M904 222 L904 276" class="dash"/>
+  <path d="M996 181 C1026 190 1040 208 1052 230" class="arrow"/>
+  <path d="M996 319 C1028 308 1044 286 1056 270" class="arrow"/>
+
+  <text x="590" y="514" text-anchor="middle" class="small">线程组大小不是装饰参数。它影响 occupancy、共享内存占用、缓存访问形状和平台兼容性。</text>
+  <text x="590" y="540" text-anchor="middle" class="small">最危险的写法是 Dispatch 后立即 CPU Readback；这会把 GPU 并行吞吐硬生生变成等待。</text>
+</svg>

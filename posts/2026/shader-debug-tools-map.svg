@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
+  <title id="title">GPU debugging tool boundaries</title>
+  <desc id="desc">A comparison of Unity Frame Debugger, RenderDoc, and Xcode GPU Capture across visibility, strength, and platform limits.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="soft" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#64748b" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <rect width="980" height="560" rx="28" fill="url(#bg)"/>
+  <text x="490" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Three Levels of GPU Capture</text>
+  <text x="490" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#475569">Engine frame order, API draw state, and Apple GPU execution are different evidence layers.</text>
+
+  <g filter="url(#soft)" font-family="Arial, sans-serif">
+    <rect x="56" y="124" width="268" height="360" rx="22" fill="#ffffff" stroke="#cbd5e1"/>
+    <rect x="356" y="124" width="268" height="360" rx="22" fill="#ffffff" stroke="#cbd5e1"/>
+    <rect x="656" y="124" width="268" height="360" rx="22" fill="#ffffff" stroke="#cbd5e1"/>
+
+    <rect x="56" y="124" width="268" height="70" rx="22" fill="#2563eb"/>
+    <rect x="356" y="124" width="268" height="70" rx="22" fill="#059669"/>
+    <rect x="656" y="124" width="268" height="70" rx="22" fill="#111827"/>
+
+    <text x="190" y="168" text-anchor="middle" font-size="23" font-weight="700" fill="#ffffff">Unity Frame Debugger</text>
+    <text x="490" y="168" text-anchor="middle" font-size="23" font-weight="700" fill="#ffffff">RenderDoc</text>
+    <text x="790" y="168" text-anchor="middle" font-size="23" font-weight="700" fill="#ffffff">Xcode GPU Capture</text>
+
+    <text x="84" y="226" font-size="15" font-weight="700" fill="#0f172a">Best for</text>
+    <text x="84" y="252" font-size="14" fill="#334155">Unity pass order</text>
+    <text x="84" y="276" font-size="14" fill="#334155">Material and shader pass</text>
+    <text x="84" y="300" font-size="14" fill="#334155">Render target stepping</text>
+
+    <text x="384" y="226" font-size="15" font-weight="700" fill="#0f172a">Best for</text>
+    <text x="384" y="252" font-size="14" fill="#334155">API state and resources</text>
+    <text x="384" y="276" font-size="14" fill="#334155">Mesh, varyings, textures</text>
+    <text x="384" y="300" font-size="14" fill="#334155">Shader disassembly</text>
+
+    <text x="684" y="226" font-size="15" font-weight="700" fill="#0f172a">Best for</text>
+    <text x="684" y="252" font-size="14" fill="#334155">Metal command stream</text>
+    <text x="684" y="276" font-size="14" fill="#334155">Apple GPU counters</text>
+    <text x="684" y="300" font-size="14" fill="#334155">Tile and bandwidth clues</text>
+
+    <line x1="84" y1="328" x2="296" y2="328" stroke="#cbd5e1"/>
+    <line x1="384" y1="328" x2="596" y2="328" stroke="#cbd5e1"/>
+    <line x1="684" y1="328" x2="896" y2="328" stroke="#cbd5e1"/>
+
+    <text x="84" y="360" font-size="15" font-weight="700" fill="#0f172a">Weak at</text>
+    <text x="84" y="386" font-size="14" fill="#334155">Low-level API binding</text>
+    <text x="84" y="410" font-size="14" fill="#334155">Compiled shader details</text>
+    <text x="84" y="434" font-size="14" fill="#334155">GPU timing truth</text>
+
+    <text x="384" y="360" font-size="15" font-weight="700" fill="#0f172a">Weak at</text>
+    <text x="384" y="386" font-size="14" fill="#334155">Unity C# intent</text>
+    <text x="384" y="410" font-size="14" fill="#334155">Vendor private counters</text>
+    <text x="384" y="434" font-size="14" fill="#334155">Metal iOS deep profiling</text>
+
+    <text x="684" y="360" font-size="15" font-weight="700" fill="#0f172a">Weak at</text>
+    <text x="684" y="386" font-size="14" fill="#334155">Non-Apple platforms</text>
+    <text x="684" y="410" font-size="14" fill="#334155">Unity material names</text>
+    <text x="684" y="434" font-size="14" fill="#334155">Cross-API comparison</text>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="174" y="510" width="632" height="30" rx="15" fill="#0f172a"/>
+    <text x="490" y="531" text-anchor="middle" font-size="14" font-weight="700" fill="#f8fafc">Use them together: Unity intent -> API evidence -> platform execution.</text>
+  </g>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500" role="img" aria-labelledby="title desc">
+  <title id="title">Shader debugging loop</title>
+  <desc id="desc">A debugging workflow that narrows a rendering problem from frame, to draw, to resources, to shader code.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f2a44"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#020617" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M2 2 L10 6 L2 10 Z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <rect width="920" height="500" rx="28" fill="url(#bg)"/>
+  <text x="460" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#f8fafc">Debug Before Editing Shader</text>
+  <text x="460" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#cbd5e1">Frame -> Draw -> Resource -> Shader -> Fix</text>
+
+  <g filter="url(#shadow)">
+    <rect x="54" y="142" width="174" height="170" rx="22" fill="url(#card)" stroke="#334155"/>
+    <rect x="270" y="142" width="174" height="170" rx="22" fill="url(#card)" stroke="#334155"/>
+    <rect x="486" y="142" width="174" height="170" rx="22" fill="url(#card)" stroke="#334155"/>
+    <rect x="702" y="142" width="174" height="170" rx="22" fill="url(#card)" stroke="#334155"/>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <circle cx="141" cy="123" r="28" fill="#0ea5e9"/>
+    <text x="141" y="132" text-anchor="middle" font-size="26" font-weight="700" fill="#ffffff">1</text>
+    <text x="141" y="182" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc">Frame</text>
+    <text x="141" y="216" text-anchor="middle" font-size="14" fill="#cbd5e1">Find the broken pass</text>
+    <text x="141" y="240" text-anchor="middle" font-size="14" fill="#cbd5e1">Compare before / after</text>
+    <text x="141" y="264" text-anchor="middle" font-size="14" fill="#cbd5e1">Check target contents</text>
+
+    <circle cx="357" cy="123" r="28" fill="#22c55e"/>
+    <text x="357" y="132" text-anchor="middle" font-size="26" font-weight="700" fill="#ffffff">2</text>
+    <text x="357" y="182" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc">Draw</text>
+    <text x="357" y="216" text-anchor="middle" font-size="14" fill="#cbd5e1">Material and pass</text>
+    <text x="357" y="240" text-anchor="middle" font-size="14" fill="#cbd5e1">State and queue</text>
+    <text x="357" y="264" text-anchor="middle" font-size="14" fill="#cbd5e1">Mesh and instance</text>
+
+    <circle cx="573" cy="123" r="28" fill="#f59e0b"/>
+    <text x="573" y="132" text-anchor="middle" font-size="26" font-weight="700" fill="#ffffff">3</text>
+    <text x="573" y="182" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc">Resource</text>
+    <text x="573" y="216" text-anchor="middle" font-size="14" fill="#cbd5e1">Render target</text>
+    <text x="573" y="240" text-anchor="middle" font-size="14" fill="#cbd5e1">Texture / buffer</text>
+    <text x="573" y="264" text-anchor="middle" font-size="14" fill="#cbd5e1">Constants and layout</text>
+
+    <circle cx="789" cy="123" r="28" fill="#a855f7"/>
+    <text x="789" y="132" text-anchor="middle" font-size="26" font-weight="700" fill="#ffffff">4</text>
+    <text x="789" y="182" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc">Shader</text>
+    <text x="789" y="216" text-anchor="middle" font-size="14" fill="#cbd5e1">Source mapping</text>
+    <text x="789" y="240" text-anchor="middle" font-size="14" fill="#cbd5e1">Disassembly</text>
+    <text x="789" y="264" text-anchor="middle" font-size="14" fill="#cbd5e1">Varyings and outputs</text>
+  </g>
+
+  <g stroke="#38bdf8" stroke-width="3" fill="none" marker-end="url(#arrow)" stroke-linecap="round">
+    <path d="M231 226 H260"/>
+    <path d="M447 226 H476"/>
+    <path d="M663 226 H692"/>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <path d="M789 333 C745 414, 181 414, 141 333" fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+    <text x="460" y="440" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0">Only change code after the evidence points at a shader fault.</text>
+    <text x="460" y="466" text-anchor="middle" font-size="13" fill="#94a3b8">If the resource is wrong, fixing HLSL only hides the real contract break.</text>
+  </g>
+</svg>

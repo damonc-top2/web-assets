@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Unity Built-in URP HDRP 三大渲染管线定位对比" viewBox="0 0 1160 620" width="900" height="481" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrow-pipeline" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <linearGradient id="urp-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="hdrp-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5f3ff"/>
+      <stop offset="1" stop-color="#ede9fe"/>
+    </linearGradient>
+    <linearGradient id="builtin-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/>
+      <stop offset="1" stop-color="#ffedd5"/>
+    </linearGradient>
+    <style>
+      .bg{fill:#f8fafc}
+      .axis{stroke:#475569;stroke-width:2;fill:none;marker-end:url(#arrow-pipeline)}
+      .grid{stroke:#cbd5e1;stroke-width:1;stroke-dasharray:6 8}
+      .label{font:700 15px sans-serif;fill:#0f172a}
+      .title{font:700 24px sans-serif;fill:#0f172a}
+      .subtitle{font:13px sans-serif;fill:#64748b}
+      .card-title{font:700 19px sans-serif;fill:#0f172a}
+      .card-text{font:13px sans-serif;fill:#334155}
+      .tiny{font:12px sans-serif;fill:#64748b}
+      .builtin{fill:url(#builtin-grad);stroke:#f97316;stroke-width:2;rx:18}
+      .urp{fill:url(#urp-grad);stroke:#2563eb;stroke-width:2;rx:18}
+      .hdrp{fill:url(#hdrp-grad);stroke:#7c3aed;stroke-width:2;rx:18}
+      .tag{fill:#ffffff;stroke:#cbd5e1;stroke-width:1;rx:12}
+      .risk{fill:#fef2f2;stroke:#ef4444;stroke-width:1.5;rx:14}
+      .ok{fill:#ecfdf5;stroke:#10b981;stroke-width:1.5;rx:14}
+    </style>
+  </defs>
+
+  <rect width="1160" height="620" class="bg"/>
+  <text x="580" y="44" text-anchor="middle" class="title">Built-in / URP / HDRP 的真正差异：控制权和预算分配</text>
+  <text x="580" y="70" text-anchor="middle" class="subtitle">横轴是平台跨度，纵轴是管线可编程与画质上限；位置代表工程倾向，不代表绝对性能。</text>
+
+  <path d="M120 510 L1040 510" class="axis"/>
+  <path d="M120 510 L120 120" class="axis"/>
+  <text x="1040" y="540" text-anchor="end" class="label">平台跨度 / 性能伸缩</text>
+  <text x="88" y="128" text-anchor="middle" transform="rotate(-90 88 128)" class="label">画质上限 / 管线控制权</text>
+
+  <path d="M120 380 L1040 380" class="grid"/>
+  <path d="M120 250 L1040 250" class="grid"/>
+  <path d="M420 510 L420 120" class="grid"/>
+  <path d="M740 510 L740 120" class="grid"/>
+
+  <rect x="172" y="344" width="278" height="132" class="builtin"/>
+  <text x="311" y="378" text-anchor="middle" class="card-title">Built-in</text>
+  <text x="198" y="410" class="card-text">旧项目兼容和低改造成本</text>
+  <text x="198" y="434" class="card-text">Forward / Deferred 可选</text>
+  <text x="198" y="458" class="card-text">扩展多依赖内置回调和 CommandBuffer</text>
+
+  <rect x="508" y="270" width="278" height="132" class="urp"/>
+  <text x="647" y="304" text-anchor="middle" class="card-title">URP</text>
+  <text x="534" y="336" class="card-text">SRP，可跨移动端、PC、主机伸缩</text>
+  <text x="534" y="360" class="card-text">Renderer Feature / Shader Graph</text>
+  <text x="534" y="384" class="card-text">主路径偏轻，项目控制成本低</text>
+
+  <rect x="790" y="150" width="278" height="142" class="hdrp"/>
+  <text x="929" y="184" text-anchor="middle" class="card-title">HDRP</text>
+  <text x="816" y="216" class="card-text">高端平台和高保真画面优先</text>
+  <text x="816" y="240" class="card-text">物理光照、体积、复杂后处理</text>
+  <text x="816" y="264" class="card-text">扩展能力强，但系统复杂度最高</text>
+
+  <rect x="166" y="540" width="210" height="34" class="tag"/>
+  <text x="271" y="562" text-anchor="middle" class="tiny">遗留项目 / 教学 / 工具链惯性</text>
+  <rect x="486" y="540" width="250" height="34" class="tag"/>
+  <text x="611" y="562" text-anchor="middle" class="tiny">商业项目主力 / 多平台发布</text>
+  <rect x="796" y="540" width="226" height="34" class="tag"/>
+  <text x="909" y="562" text-anchor="middle" class="tiny">高端 PC / 主机 / 影视化表达</text>
+
+  <rect x="176" y="102" width="294" height="62" class="risk"/>
+  <text x="323" y="128" text-anchor="middle" class="label">迁移风险</text>
+  <text x="323" y="150" text-anchor="middle" class="tiny">材质、Shader、后处理和光照设置都可能重做</text>
+
+  <rect x="506" y="102" width="294" height="62" class="ok"/>
+  <text x="653" y="128" text-anchor="middle" class="label">长期选择</text>
+  <text x="653" y="150" text-anchor="middle" class="tiny">新项目优先在 SRP 体系内选 URP 或 HDRP</text>
+
+  <path d="M450 386 C500 360 504 348 508 342" class="axis"/>
+  <path d="M786 286 C810 262 806 240 790 226" class="axis"/>
+</svg>

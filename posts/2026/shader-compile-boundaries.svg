@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="560" viewBox="0 0 920 560" role="img" aria-labelledby="title desc">
+  <title id="title">Shader compile artifact boundaries</title>
+  <desc id="desc">A layered boundary chart showing what developers write, what Unity generates, what graphics APIs consume, and what GPU drivers finally execute.</desc>
+  <defs>
+    <style>
+      .bg { fill: #0b1120; }
+      .lane { fill: #111827; stroke: #334155; stroke-width: 2; rx: 20; }
+      .card { fill: #1f2937; stroke: #475569; stroke-width: 1.5; rx: 14; }
+      .api { fill: #172554; stroke: #60a5fa; }
+      .driver { fill: #431407; stroke: #fb923c; }
+      .text { fill: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 18px; font-weight: 700; }
+      .small { fill: #cbd5e1; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 13px; }
+      .muted { fill: #94a3b8; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12px; }
+      .line { stroke: #94a3b8; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .boundary { stroke: #fbbf24; stroke-width: 2; stroke-dasharray: 8 7; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="920" height="560"/>
+  <text class="text" x="36" y="44">能看到什么，不能看到什么</text>
+  <text class="small" x="36" y="70">调试时要先判断自己站在哪一层：源码、Unity 生成代码、API 中间码、还是驱动最终执行码。</text>
+
+  <rect class="lane" x="36" y="106" width="848" height="88"/>
+  <text class="text" x="62" y="140">开发者可控</text>
+  <rect class="card" x="230" y="124" width="174" height="50"/>
+  <text class="small" x="250" y="146">ShaderLab 状态</text>
+  <text class="muted" x="250" y="165">Tags / Pass / Blend</text>
+  <rect class="card" x="432" y="124" width="174" height="50"/>
+  <text class="small" x="452" y="146">HLSL 函数</text>
+  <text class="muted" x="452" y="165">vert / frag / compute</text>
+  <rect class="card" x="634" y="124" width="174" height="50"/>
+  <text class="small" x="654" y="146">pragma</text>
+  <text class="muted" x="654" y="165">target / keywords</text>
+
+  <rect class="lane" x="36" y="226" width="848" height="88"/>
+  <text class="text" x="62" y="260">Unity 生成</text>
+  <rect class="card" x="230" y="244" width="174" height="50"/>
+  <text class="small" x="250" y="266">Surface 展开</text>
+  <text class="muted" x="250" y="285">光照 / 阴影 Pass</text>
+  <rect class="card" x="432" y="244" width="174" height="50"/>
+  <text class="small" x="452" y="266">预处理结果</text>
+  <text class="muted" x="452" y="285">include / macro</text>
+  <rect class="card" x="634" y="244" width="174" height="50"/>
+  <text class="small" x="654" y="266">变体集合</text>
+  <text class="muted" x="654" y="285">keywords × APIs</text>
+
+  <line class="boundary" x1="36" y1="334" x2="884" y2="334"/>
+  <text class="muted" x="62" y="354">API 边界：从这里开始，看到的是平台可消费的 shader 表示，不是源代码本身。</text>
+
+  <rect class="lane" x="36" y="376" width="848" height="88"/>
+  <text class="text" x="62" y="410">平台产物</text>
+  <rect class="card api" x="230" y="394" width="174" height="50"/>
+  <text class="small" x="250" y="416">DXBC / DXIL</text>
+  <text class="muted" x="250" y="435">Direct3D runtime</text>
+  <rect class="card api" x="432" y="394" width="174" height="50"/>
+  <text class="small" x="452" y="416">SPIR-V</text>
+  <text class="muted" x="452" y="435">Vulkan module</text>
+  <rect class="card api" x="634" y="394" width="174" height="50"/>
+  <text class="small" x="654" y="416">MSL / MetalLib</text>
+  <text class="muted" x="654" y="435">Metal pipeline input</text>
+
+  <rect class="lane" x="36" y="488" width="848" height="48"/>
+  <text class="text" x="62" y="518">驱动私有</text>
+  <rect class="card driver" x="230" y="494" width="578" height="34"/>
+  <text class="small" x="252" y="516">GPU-specific machine code: scheduling, register allocation, ISA lowering, cache and pipeline decisions</text>
+
+  <path class="line" d="M720 174 V244"/>
+  <path class="line" d="M720 294 V394"/>
+  <path class="line" d="M720 444 V494"/>
+</svg>

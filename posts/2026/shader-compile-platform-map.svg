@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+  <title id="title">Unity shader compile platform map</title>
+  <desc id="desc">ShaderLab and HLSL source is imported by Unity, expanded into variants, then compiled to platform-facing artifacts such as DXBC, DXIL, SPIR-V, MSL, MetalLib, and finally driver-specific machine code.</desc>
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .panel { fill: #111827; stroke: #334155; stroke-width: 2; rx: 18; }
+      .box { fill: #1e293b; stroke: #64748b; stroke-width: 1.5; rx: 14; }
+      .accent { fill: #164e63; stroke: #22d3ee; }
+      .warn { fill: #3f1d28; stroke: #fb7185; }
+      .metal { fill: #312e81; stroke: #a5b4fc; }
+      .text { fill: #e5e7eb; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 18px; font-weight: 700; }
+      .small { fill: #cbd5e1; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 13px; }
+      .muted { fill: #94a3b8; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12px; }
+      .arrow { stroke: #93c5fd; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #f59e0b; stroke-width: 2; stroke-dasharray: 7 7; fill: none; marker-end: url(#arrowWarn); }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#93c5fd"/>
+    </marker>
+    <marker id="arrowWarn" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="920" height="520"/>
+  <text class="text" x="36" y="44">Unity / ShaderLab / HLSL 到平台编译产物</text>
+  <text class="small" x="36" y="70">看见的中间码不是最终硬件 ISA；驱动仍会按 GPU 型号和运行状态继续编译。</text>
+
+  <rect class="panel" x="36" y="105" width="210" height="126"/>
+  <text class="text" x="58" y="140">源码层</text>
+  <text class="small" x="58" y="168">ShaderLab</text>
+  <text class="small" x="58" y="192">HLSL / CGPROGRAM</text>
+  <text class="small" x="58" y="216">.shader / .compute / Graph</text>
+
+  <rect class="panel" x="318" y="88" width="250" height="160"/>
+  <text class="text" x="342" y="123">Unity 处理层</text>
+  <text class="small" x="342" y="151">ShaderImporter</text>
+  <text class="small" x="342" y="175">Surface / Graph 代码生成</text>
+  <text class="small" x="342" y="199">预处理与 include 展开</text>
+  <text class="small" x="342" y="223">Pass × Stage × Keyword 变体</text>
+
+  <rect class="box accent" x="654" y="40" width="210" height="82"/>
+  <text class="text" x="680" y="73">Direct3D</text>
+  <text class="small" x="680" y="101">DXBC / DXIL</text>
+
+  <rect class="box accent" x="654" y="158" width="210" height="82"/>
+  <text class="text" x="680" y="191">Vulkan</text>
+  <text class="small" x="680" y="219">SPIR-V module</text>
+
+  <rect class="box metal" x="654" y="276" width="210" height="96"/>
+  <text class="text" x="680" y="309">Metal</text>
+  <text class="small" x="680" y="337">MSL source / IR</text>
+  <text class="small" x="680" y="359">MetalLib / pipeline data</text>
+
+  <rect class="box warn" x="310" y="336" width="280" height="108"/>
+  <text class="text" x="336" y="371">驱动最终层</text>
+  <text class="small" x="336" y="399">GPU vendor compiler</text>
+  <text class="small" x="336" y="423">register allocation / scheduling</text>
+  <text class="small" x="336" y="447">hardware-specific ISA</text>
+
+  <path class="arrow" d="M246 168 H318"/>
+  <path class="arrow" d="M568 128 C610 104 620 88 654 82"/>
+  <path class="arrow" d="M568 172 H654"/>
+  <path class="arrow" d="M568 216 C610 250 620 306 654 320"/>
+  <path class="dash" d="M760 122 C735 470 610 470 590 390"/>
+  <path class="dash" d="M760 240 C720 445 615 455 590 390"/>
+  <path class="dash" d="M760 372 C700 412 645 424 590 390"/>
+
+  <text class="muted" x="36" y="489">边界：Unity 能展示平台产物；RenderDoc / Xcode 能定位 API 与 shader 视图；最终 ISA 通常由驱动私有编译器控制。</text>
+</svg>
