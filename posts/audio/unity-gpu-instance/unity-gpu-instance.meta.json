@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-gpu-instance\\unity-gpu-instance.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-gpu-instance\\unity-gpu-instance.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "56c5cc037f8fbbdf875268e0a9342e4e08d5c33f3bec358e8be65485565b3c53",
+  "duration_seconds": 843.338,
+  "duration_hms": "14:03",
+  "bytes": 5060448,
+  "generated_at": "2026-11-15T10:00:44.679324+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

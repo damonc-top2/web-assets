@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-surface-displacement\\unity-surface-displacement.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-surface-displacement\\unity-surface-displacement.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "fc36a78ff3913b05dbee0f240b0ffc5ae70c44d5dc7d0d2c04a08c867208fa52",
+  "duration_seconds": 872.935,
+  "duration_hms": "14:33",
+  "bytes": 5238000,
+  "generated_at": "2026-11-15T10:25:39.113460+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

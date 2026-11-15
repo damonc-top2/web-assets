@@ -58,7 +58,7 @@ HDR 和 LDR 是两条颜色路径。HDR 下光照直接相加。LDR 下光照要
 第四个坑，聚光灯整片黑。症状是金字塔范围内几乎没有光。根因有两个：一是金字塔顶点的射线没有转到视图空间，二是转过去以后 X 和 Y 方向反了。修复是用 UnityObjectToViewPos 把顶点位置转到视图空间，再乘一个 X、Y 为负一、Z 为一的向量，最后用 _LightAsQuad 插值，和方向光的法线射线统一。
 第五个坑，阴影边缘硬切。症状是阴影在最大距离附近突然消失，边缘像锯齿。根因是手写采样只采阴影贴图，没有内置 shader 的渐隐逻辑。修复是用 UnityComputeShadowFadeDistance 算距离，用 UnityComputeShadowFade 算零点到一的因子，加到衰减上。Stable Fit 和 Close Fit 的算法不同，函数已经把两种模式封装好了。
 第六个坑，cookie 边缘有硬边。症状是聚光灯照到斜面上的 cookie 图案边缘发锯齿。根因是相邻片元的 cookie 坐标差异大，GPU 选到的 mip 级别对当前表面太低。修复是用带偏置的纹理采样，把 mip 偏移设成负八。
-边界也要说清楚。LDR 的混合模式写死会破坏 HDR，正确做法是把源混合和目标混合做成材质属性，按模式切换。距离衰减纹理的通道在不同平台不同，必须用 _UNITY_ATTEN_CHANNEL。软阴影用 SHADOWS_SOFT 关键字区分。阴影跳过看起来很美，但 UNITY_BRANCH 本身也有成本，只有软阴影这种多次采样的场景才值得，方向光阴影只有一次采样，跳过反而亏。这套实现属于 Unity 内置管线，依赖 Built-In shader settings、Stencil 和这些内置 cginc，搬到可编程渲染管线不能照抄。
+边界也要说清楚。LDR 的混合模式写死会破坏 HDR，正确做法是把源混合和目标混合做成材质属性，按模式切换。距离衰减纹理的通道在不同平台不同，必须用 _UNITY_ATTEN_CHANNEL。软阴影模式用单独的关键字区分。阴影跳过看起来很美，但 UNITY_BRANCH 本身也有成本，只有软阴影这种多次采样的场景才值得，方向光阴影只有一次采样，跳过反而亏。这套实现属于 Unity 内置管线，依赖 Built-In shader settings、Stencil 和这些内置 cginc，搬到可编程渲染管线不能照抄。
 这些坑逐个看，仍然是范围和重建两件事。
 
 【收束】

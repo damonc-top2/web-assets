@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-reflection\\unity-reflection.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-reflection\\unity-reflection.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "c51b59014a62129c08eec191ee860a409c7a581ad493894f2cd5ce12e2e3ab9a",
+  "duration_seconds": 785.81,
+  "duration_hms": "13:06",
+  "bytes": 4715280,
+  "generated_at": "2026-11-15T09:58:43.285601+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

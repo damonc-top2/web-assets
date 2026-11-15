@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "曲面细分阶段位于顶点与片元之间，且必须同时提供 Hull 程序和 Domain 程序，不是加一个程序就够。",
+    "source_quote": "该阶段位于顶点（Vertex）和片元（Fragment）着色器阶段之间。但它不仅仅是向我们的 Shader 添加另一个程序那么简单。我们需要一个 Hull 程序和一个 Domain 程序。",
+    "section": "1 Hull 和 Domain"
+  },
+  {
+    "claim": "启用曲面细分时最低 Shader Target 是 4.6，不手动设置 Unity 会警告并自动使用该级别。",
+    "source_quote": "使用曲面细分时的最低 Shader Target 级别是 4.6。如果我们不手动设置，Unity 将发出警告并自动使用该级别。",
+    "section": "1.1 创建曲面细分 Shader"
+  },
+  {
+    "claim": "Hull 程序对 Patch 中每个控制点各调用一次，用 SV_OutputControlPointID 语义的无符号整数指明本次处理哪个控制点。",
+    "source_quote": "它将针对 Patch 中的每个顶点调用一次，并带有一个额外的参数，指定它应该处理哪个控制点（顶点）。该参数是一个带有 SV_OutputControlPointID 语义的无符号整数。",
+    "section": "1.2 Hull Shader"
+  },
+  {
+    "claim": "Hull 需要五个属性共同配置：domain 为 tri、输出三个控制点、triangle_cw、integer 划分、以及 patchconstantfunc。",
+    "source_quote": "我们还必须明确指定我们每个 Patch 输出三个控制点，三角形的每个角对应一个。……这通过 UNITY_outputtopology 属性控制。其参数应为 triangle_cw。",
+    "section": "1.2 Hull Shader"
+  },
+  {
+    "claim": "细分由四个曲面细分因子控制：三条边各一个，三角形内部一个；边用 SV_TessFactor，内部用 SV_InsideTessFactor。",
+    "source_quote": "为了确定如何细分三角形，GPU 使用四个曲面细分因子（Tessellation Factors）。三角形 Patch 的每条边都有一个因子。三角形内部也有一个因子。三个边向量必须作为具有 SV_TessFactor 语义的 float 数组传递。内部因子使用 SV_InsideTessFactor 语义。",
+    "section": "1.3 Patch Constant 函数"
+  },
+  {
+    "claim": "细分阶段本身不生成顶点，只提供重心坐标，由 Domain 程序按 SV_DomainLocation 逐顶点生成最终数据。",
+    "source_quote": "虽然曲面细分阶段决定了 Patch 应该如何细分，但它并不生成任何新的顶点。相反，它为这些顶点提供了重心坐标（Barycentric Coordinates）。由 Domain Shader 使用这些坐标来导出最终顶点。",
+    "section": "1.4 Domain Shader"
+  },
+  {
+    "claim": "因子全为 2 时，原三角形被六个小三角形替换，Quad 的两个三角形共得 12 个三角形。",
+    "source_quote": "这使得为每条原始边生成两个三角形成为可能，因此原始三角形已被六个较小的三角形替换。由于 Quad 由两个三角形组成，我们现在总共得到 12 个三角形。",
+    "section": "2.1 曲面细分因子"
+  },
+  {
+    "claim": "偶数因子产生单一中心顶点，奇数因子产生中心三角形；向内每进一阶，子边数减少二。",
+    "source_quote": "当曲面细分因子为偶数时，将有一个单一的中心顶点。当它们为奇数时，将有一个中心三角形。如果我们使用更大的曲面细分因子，我们最终会得到多个嵌套的三角形。向中心每迈进一阶，三角形被细分的数量就会减少二，直到我们最终得到一或零个子边。",
+    "section": "2.1 曲面细分因子"
+  },
+  {
+    "claim": "硬件对每个 Patch 的细分上限是 64，因此统一因子属性的范围设为 1 到 64。",
+    "source_quote": "将其范围设置为 1–64。无论我们想使用多高的因子，硬件在每个 Patch 上的细分限制都是 64。",
+    "section": "2.3 可变因子"
+  },
+  {
+    "claim": "OpenGL Core 上内部因子只取第三个边因子的结果，是编译器生成代码的 bug；在内部因子处重复调用边因子函数可以绕过。",
+    "source_quote": "在为 OpenGL Core 生成的代码中存在一个 Bug。在计算内部因子时，只使用了第三个边因子，而不是使用三个边因子。数据就在那里，只是它访问了三次索引 2，而不是索引 0、1 和 2。",
+    "section": "3.5 使用正确的内部因子"
+  }
+]

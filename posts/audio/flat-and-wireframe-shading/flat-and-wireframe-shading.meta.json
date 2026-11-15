@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\flat-and-wireframe-shading\\flat-and-wireframe-shading.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\flat-and-wireframe-shading\\flat-and-wireframe-shading.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "b0056333ec34a5a87b5afc7a99399f5bc20f45102e082fadaab14a0b1cde3688",
+  "duration_seconds": 1154.826,
+  "duration_hms": "19:15",
+  "bytes": 6929280,
+  "generated_at": "2026-11-15T10:03:26.134734+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

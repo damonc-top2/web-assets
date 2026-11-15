@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-shadows\\unity-shadows.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-shadows\\unity-shadows.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "26e21780fb411728c476d90bf6f3e9fb25cfdb274f385ea4c5932e8ae77b48e5",
+  "duration_seconds": 1110.059,
+  "duration_hms": "18:30",
+  "bytes": 6660720,
+  "generated_at": "2026-11-15T09:57:55.575601+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

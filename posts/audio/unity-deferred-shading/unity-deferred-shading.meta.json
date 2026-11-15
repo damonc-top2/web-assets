@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-deferred-shading\\unity-deferred-shading.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-deferred-shading\\unity-deferred-shading.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "a8d632f77acdaebf1cdf41333b1664e5c1ace8ea4c504388f5113fed1b0260dc",
+  "duration_seconds": 664.228,
+  "duration_hms": "11:04",
+  "bytes": 3985776,
+  "generated_at": "2026-11-15T10:06:33.588842+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

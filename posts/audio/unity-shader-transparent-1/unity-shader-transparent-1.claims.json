@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "裁剪函数参数小于零时整个片元被丢弃，被丢弃的片元不会写入深度缓冲；阈值应做成属性而不是写死。",
+    "source_quote": "CG提供了一个Clip函数，若参数<0，那么该像素所在的片元整个就会被丢弃(粗暴处理)，同时不会写入深度缓冲。……给定0.5不太灵活，我们需要一个任意值来代替。",
+    "section": "剪切镂空"
+  },
+  {
+    "claim": "Fade 模式的队列起始值是 3000，表示透明物体，渲染类型是 Transparent。",
+    "source_quote": "Queue始值是3000，标识透明物体。RenderType是Transparent.",
+    "section": "渲染设置"
+  },
+  {
+    "claim": "不透明与镂空模式通过不透明几何批次渲染，Fade 通过透明几何批次渲染，且不透明批次先于透明批次。",
+    "source_quote": "当使用Opaque或Cutout模式，使用该材质的对象通过Render.OpaqueGeometry渲染。……当使用Fade模式，对象通过Render.TransparentGeometry渲染。……Opaque和Cutout先被渲染，Transparent后渲染。",
+    "section": "渲染透明物体"
+  },
+  {
+    "claim": "Fade 混合在 alpha 为一时源一目标零、叠加通道源一目标一；alpha 为零时两个通道都用源零目标一。",
+    "source_quote": "当alpha为1，物体将会渲染成完全不透明。……通常在basePass使用Blend One Zero，在additivePass使用Blend One One；……当alpha为0，物体将会渲染成完全透明。这两个pass的融合只能使用Blend Zero One；",
+    "section": "Blending Fragments-融合"
+  },
+  {
+    "claim": "使用 Fade 渲染模式必须禁用深度写入，否则排序不完美时不可见物体的深度会覆盖可见物体。",
+    "source_quote": "因此在使用Fade渲染模式时，我们必须禁用对深度缓冲区的写入。",
+    "section": "深度冲突问题"
+  },
+  {
+    "claim": "透明物体按物体中心位置排序；大物体或紧靠的平面会在视角变化时突然改变顺序，相交几何无法绕过该限制。",
+    "source_quote": "为了确定几何图形的绘制顺序，Unity使用了物体的中心位置。……无法绕过此限制，尤其是在绘制相交几何时。",
+    "section": "深度冲突问题"
+  },
+  {
+    "claim": "Transparent 模式的源混合必须固定为一、不依赖 alpha，以保证反射和高光始终加入。",
+    "source_quote": "因此源混合模式必须为1而不能依赖Alpha值。",
+    "section": "全透明渲染-逼真的材质"
+  },
+  {
+    "claim": "预乘 alpha 少算一次乘法并让边缘插值正确；代价是颜色变暗、通道精度下降。",
+    "source_quote": "少计算一次乘法……在有透明像素的边缘进行正确插值……RGB预乘后，RGB每个通道值会变小，颜色变暗……纹理精度下降",
+    "section": "预乘Alpha"
+  },
+  {
+    "claim": "物体反射越强，透过的光越少，因此透明材质的 alpha 需要按反射率修正。",
+    "source_quote": "一个物体的反射性越强，穿过它的光就越少，不管它固有的透明度如何。……给定初始alpha和反射率",
+    "section": "调节Alpha"
+  },
+  {
+    "claim": "裁剪在桌面 GPU 上性能尚可，对移动 GPU 很糟糕；不透明物体不需要执行该函数，因此要用关键字隔离。",
+    "source_quote": "Clip性能问题：桌面GPU尚可，但是对移动GPU来讲性能就很糟糕。……而且对于不透明物体不需要执行该函数。",
+    "section": "渲染模式"
+  }
+]

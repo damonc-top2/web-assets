@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "间接光结构体里的高光项默认是零，这就是金属材质只剩一个高光点、表面全黑的原因，反射就是给这一项赋值",
+    "source_quote": "之前对于间接光光照计算时，只计算了漫反射没有计算镜面反射，默认值给的0。这就是为什么球面是黑色。",
+    "section": "间接镜面反射"
+  },
+  {
+    "claim": "环境采样用立方体贴图采样宏取 unity_SpecCube0，再用 DecodeHDR 把压缩的高动态范围数据解码回 RGB，漏掉解码会整体偏暗、亮部被压扁",
+    "source_quote": "而采样函数UNITY_SAMPLE_TEXCUBE宏需要两个参数，1是天空盒，2是uv。先用法线替代uv。同时天空盒支持HDR高动态范围颜色，所以还需要对HDR解码到RGB",
+    "section": "环境采样-Sampling Enviroment"
+  },
+  {
+    "claim": "正确的反射必须用视线方向经法线反射后的方向采样，直接用法线采样得到的图案不随视角变化，等于把环境画在物体上",
+    "source_quote": "因为上面使用了球体的法线采样环境，且投影不依赖视图方向，因此就好像在球体上画了环境。为了得到正确的结果，我们需要得到从相机到表面的方向，然后用表面法线再反射该方向。",
+    "section": "反射追踪-Tracing Reflections"
+  },
+  {
+    "claim": "反射函数的第一个参数是射向表面的入射光方向，而视线方向是从表面指向眼睛，两者相反，所以要传视线方向取负，否则反射出来的环境整个是反的",
+    "source_quote": "float3 reflectDir = reflect(-viewDir, i.normal);",
+    "section": "反射追踪-Tracing Reflections"
+  },
+  {
+    "claim": "粗糙表面用带 mip 层级的立方体贴图采样，粗糙度等于 1 减光滑度，再乘以层级总步数得到采样 mip 等级",
+    "source_quote": "我们可使用UNITY_SAMPLE_TEXCUBE_LOD宏指定采样cubeMap的mipmap等级。由于烘焙得到的环境cubeMap使用三线性过滤，所以能混合相邻mipMapLevel.这可使得根据smoothness大小确定mipmap等级。材质越粗糙，mipMap等级就越高。粗糙值范围也是[0,1]，也就是1-smoothess。Unity提供了UNITY_SPECCUBE_LOD_STEPS宏来计算这个范围。",
+    "section": "粗糙镜面"
+  },
+  {
+    "claim": "粗糙度到 mip 层级的映射不是线性的，Unity 用 1.7 乘 r 减 0.7 乘 r 平方 的二次曲线换算",
+    "source_quote": "事实上，粗糙度和mipmap等级不是线性的，Unity使用了1.7r – 0.7r^2公式换算。r是原始的粗糙度",
+    "section": "粗糙镜面"
+  },
+  {
+    "claim": "Unity 的 Unity_GlossyEnvironment 函数把粗糙度换算、立方体贴图按层级采样、HDR 解码三步打包成一个调用",
+    "source_quote": "UnityStandardBRDF文件提供了Unity_GlossyEnvironment函数计算roughness、采样cubeMap、转换HDR代码，以及Unity_GlossyEnvironmentData结构体包含了roughness、反射方向。",
+    "section": "粗糙镜面"
+  },
+  {
+    "claim": "盒投影分三步：把盒边界平移到以着色点为中心、按方向分量求三轴标量并取最小值、用最小标量缩放方向再加偏移得到新的采样方向",
+    "source_quote": "第一步是偏移box到相对该表面顶点为中心；第二步缩放方向向量，以便从该位置移动到交点位置；第三步使用最小标量缩放方向向量找到交点。通过减去cubeMap位置得到新的反射方向。",
+    "section": "调整采样方向-BoxProjection"
+  },
+  {
+    "claim": "反射探针的盒始终与轴对齐，忽略所有旋转和缩放，只用盒尺寸确定投影范围",
+    "source_quote": "box尺寸和原点确定了其位置在世界空间的立方体区域；始终与轴对齐，忽略所有旋转和缩放",
+    "section": "反射探针box"
+  },
+  {
+    "claim": "双探针混合的权重存在第一个探针盒最小角的 w 分量里，w 为 1 只用第一个探针；第二个探针的采样器需借用第一个探针的采样器以避免编译错误",
+    "source_quote": "shader支持了两个探针数据，第二个探针内置变量名是unity_SpecCube1。我们要采样两次环境贴图并依据哪个更优进行插值。Unity已经做了计算把插值值存在了，unity_SpecCube0_BoxMin的第四个分量w。w为1只是第一个探针，值小于1开始混合。",
+    "section": "两个探针插值计算"
+  }
+]

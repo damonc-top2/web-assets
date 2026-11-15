@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "Shader 关键字后面的字符串是材质下拉菜单里显示的名字，不必与文件名相同。",
+    "source_quote": "Shader是通过*shader*关键字定义，关键字是一个字符串，在下拉界面中选择时显示的也是该关键字。它不必与文件名相同。",
+    "section": "创建一个Shader"
+  },
+  {
+    "claim": "SubShader 用于按编译平台给同一效果分组；每个 SubShader 至少包含一个 Pass，多个 Pass 意味着物体被渲染多次。",
+    "source_quote": "我们可以使用sub-shader操作shader变量进行分组, 这允许程序员为不同的编译平台提供不同的sub-shader.……sub-shader至少包含一个以上的pass块, pass代码块是物体实际被渲染的地方",
+    "section": "创建一个Shader"
+  },
+  {
+    "claim": "只写最外层 Shader 时材质编译失败、球体显示为紫红色；补上空的 SubShader 和空的 Pass 后球体变白，说明没有错误；再补上两个空的顶点与片元函数，球体反而消失，因为顶点程序没有输出位置、三角形退化。",
+    "source_quote": "我们的球体现在应该变成了白色，因为我们使用了一个空pass渲染，这也意味着我们的Shader没有出现任何错误了。",
+    "section": "创建一个Shader"
+  },
+  {
+    "claim": "顶点函数必须返回四分量并标记 SV_POSITION，片元函数必须返回四分量并标记 SV_TARGET；顶点函数的输出作为片元函数的输入，参数必须匹配。",
+    "source_quote": "**Vertex顶点函数必须要返回每个顶点的最终坐标：SV_POSITION**。……**Fragment片元函数返回像素的最终颜色：SV_TARGET。**……Vertex顶点函数的输出作为Fragment片元函数的输入。输入的参数需要匹配！",
+    "section": "产生输出(输出语义)"
+  },
+  {
+    "claim": "顶点变换使用 UNITY_MATRIX_MVP，它是模型、观察、投影三个矩阵的合成，一次乘法把对象空间坐标送到裁剪空间。",
+    "source_quote": "使用MVP：model_view_projection矩阵变换顶点坐标，该值定义在 *UnityShaderVariables* 文件，变量名是 `UNITY_MATRIX_MVP`。",
+    "section": "顶点变换"
+  },
+  {
+    "claim": "UnityObjectToClipPos 等价于 mul(UNITY_MATRIX_MVP, v.vertex)，但它把第四个分量写死为 1，因为网格提供的值始终为 1 而编译器无法知晓，这样可以省掉运行时计算。",
+    "source_quote": "**UnityObjectToClipPos** 是 Unity5.6 之后的优化：它对应 mul(UNITY_MATRIX_MVP, v.vertex)，但是该函数使用了常数1作为第四个坐标而不是依赖网格数据……因为通过网格提供的数始终为1，但是编译器不能知晓。",
+    "section": "结构体"
+  },
+  {
+    "claim": "顶点程序输出传给片元程序时会被光栅化器线性插值；TEXCOORD0 只是通用语义通道，装的是插值后的值而不是原始顶点值。",
+    "source_quote": "处理过的顶点数据不直接传递给Fragment片元函数，而在片元函数中访问插值本地数据，需要增加一个参数，并指定语义 *TEXCOORD0*,它表示贴图的UV坐标。",
+    "section": "从顶点到片元"
+  },
+  {
+    "claim": "纹理属性的类型是 2D，默认值是内置纹理名 white、black 或 gray；把主纹理命名为 _MainTex 才能用 Material.mainTexture 从脚本访问。",
+    "source_quote": "常规纹理属性的类型是2D ，因为还有其他类型的纹理。 默认值是引用 Unity 的默认纹理之一的字符串，可以是white 、 black 或 gray 。 主纹理命名约定是 *_MainTex*。",
+    "section": "添加纹理"
+  },
+  {
+    "claim": "纹理的平铺与偏移存放在名为纹理名加 _ST 后缀的 float4 中，XY 是平铺、ZW 是偏移；TRANSFORM_TEX 宏等价于先乘 XY 再加 ZW，且应放在顶点函数里以节省逐像素计算。",
+    "source_quote": "这些额外的纹理数据存储在材质中，也可以由着色器访问。 可以通过与关联材料同名的变量加上 *_ST* 后缀来执行此操作。这个变量的类型必须是float4.……平铺向量用于缩放纹理，因此默认为 $(1, 1)$。 它存储在变量的XY部分。",
+    "section": "平铺和偏移"
+  },
+  {
+    "claim": "UV 的水平坐标 U 从左到右递增、V 从下到上递增，但 Direct3D 的 V 方向是从上到下；球体两极的纹理失真来自三角形内部线性插值，而网格极区三角形很少。",
+    "source_quote": "U坐标从左到右递增，起始点为0终点为1。 V坐标从下到上增加，除了Direct3D它从上到下。……发生纹理失真是因为插值在三角形中是线性的。 Unity 的球体在两极附近只有几个三角形，其中UV坐标失真最大。",
+    "section": "使用UV坐标"
+  }
+]

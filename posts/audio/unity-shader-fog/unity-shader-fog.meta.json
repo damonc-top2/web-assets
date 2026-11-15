@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-shader-fog\\unity-shader-fog.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-shader-fog\\unity-shader-fog.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "ca903d296fed1851c2710069f03598e5bacb8036864a3dd7688c55dc813a199e",
+  "duration_seconds": 737.33,
+  "duration_hms": "12:17",
+  "bytes": 4424400,
+  "generated_at": "2026-11-15T10:07:37.289091+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

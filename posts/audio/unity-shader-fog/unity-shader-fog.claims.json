@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "Unity 内置的场景雾只对使用 Forward 渲染路径的物体生效，激活 Deferred 路径时雾不生效，需要在光照完成后用后处理补。",
+    "source_quote": "Unity自带的雾只适用于使用了Forward渲染路径的物体。若激活Deferred path，提示：……deferred路径没有雾，这是因为所有的光照计算完成后，才会计算雾。",
+    "section": "标准雾-Standard Fog"
+  },
+  {
+    "claim": "线性雾因子为 f=(E-c)/(E-s)，其中 c 是雾坐标、s 是视距起点、E 是终点，f 被限定在 0 到 1 之间用于插值。",
+    "source_quote": "**线性雾公式**：$$f = { {E-c} \\over {E-s} }$$ c 是雾坐标；s 是视距起始距离；E 是视距终止距离；f值 被限定在[0, 1]范围，被用在雾和物体着色之间插值。",
+    "section": "线性雾-Linear Fog"
+  },
+  {
+    "claim": "指数雾因子为 1/2 的 cd 次方，指数平方雾因子为 1/2 的 cd 平方次方，d 是密度因子、c 是距离因子。",
+    "source_quote": "**指数雾公式**：$$f = {1 \\over {2^{cd}}}$$ d 是fog的密度因子；c 是距离因子。……**指数平方雾公式**：$$f = {1 \\over {2^{(cd)^2}}}$$",
+    "section": "指数雾-Exponential Fog"
+  },
+  {
+    "claim": "使用 multi_compile_fog 指令会额外展开线性、指数、指数平方三个雾关键字变体。",
+    "source_quote": "增加Fog需要使用内置关键字：_multi_compile_fog_指令。该指令的变体会额外增加：_FOG_LINEAR、FOG_EXP、FOG_EXP2_",
+    "section": "渲染雾-Adding Fog"
+  },
+  {
+    "claim": "雾因子必须夹在 0 到 1 之间，且插值只作用于 RGB，不能影响 alpha。",
+    "source_quote": "注意雾因子必须限定在[0,1]……同时雾也不能影响Alpha值……color.rgb = learp(unity_FogColor.rgb, color.rgb, saturate(unityFogFactor));",
+    "section": "渲染雾-Adding Fog"
+  },
+  {
+    "claim": "基于深度的雾比基于世界空间距离的雾更快，因为不必计算平方根；代价是忽略视角，相机旋转会改变雾密度，且受近裁剪面距离影响。",
+    "source_quote": "**基于深度代替距离的优点**是：不必计算平方根，计算速度更快，适用于非真实渲染。**缺点**是：忽略视角，也即相机以原点旋转会影响雾密度，因为旋转时密度会改变。",
+    "section": "深度雾-Depth-Based Fog"
+  },
+  {
+    "claim": "多光源下每个附加光 pass 都会把雾色叠加到颜色上导致偏亮，解决方法是附加光 pass 使用黑色雾色。",
+    "source_quote": "增加支持多光源。但是变得更亮了，这是因为每个光的颜色都叠加到了雾色之上，所以黑色雾是没问题。解决办法就是：对additive pass使用黑色雾，这样就会淡化一部分颜色。",
+    "section": "多光源-Multiple Lights"
+  },
+  {
+    "claim": "延迟雾作为后处理执行，OnRenderImage 的 source 是已算好的最终颜色，destination 用于输出，内部必须调用 Graphics.Blit 绘制全屏面片。",
+    "source_quote": "source 是已计算好最终颜色 destination 输出雾。若为空直接进入帧缓冲区 方法内部必须调用Graphics.Blit函数，它会画一个全屏面片输出到Destination",
+    "section": "后处理效果-Image Effects"
+  },
+  {
+    "claim": "延迟雾会显得蒙在物体上方，需要 ImageEffectOpaque 属性让它在不透明物体绘制之后、透明物体之前执行。",
+    "source_quote": "对比图15，就像把雾蒙在了物体上方。解决办法就是在绘制物体之前，绘制雾。使用`_ImageEffectOpaque_属性绘制`",
+    "section": "雾混合-Fixing the Fog"
+  },
+  {
+    "claim": "距离雾只需相机视锥四个角的射线，其余像素靠插值；传入 shader 前要把相机角点顺序从左下、左上、右上、右下重排为左下、右下、左上、右上。",
+    "source_quote": "但实际上，只需要4条射线，金字塔的每个角都需要一条射线。用插值可给出中间所有像素的光线。……相机提供的是：左下、左上、右上、右下。shader需要：左下、右下、左上、右上",
+    "section": "距离检测-Calculating Rays"
+  }
+]
