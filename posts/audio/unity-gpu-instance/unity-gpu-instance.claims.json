@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "GPU 实例化在运行时针对可见对象，且不能合并不同的网格或材质，它只是让 GPU 一次渲染同一网格的多个副本。",
+    "source_quote": "还有另一种组合draw call的方法：GPU instance或Geometry instance。与动态批处理一样，此操作在运行时针对可见对象。 它的目标是让GPU一次性渲染同一网格의多个副本。 因此，它不能组合不同的网格或材质。",
+    "section": "Batching Instance-批处理"
+  },
+  {
+    "claim": "实例 ID 由 GPU 通过顶点数据传入顶点程序，多数平台上是一个无符号整数，语义为 SV_InstanceID；Unity 用宏把 unity_ObjectToWorld 重定义为矩阵数组以保持向后兼容。",
+    "source_quote": "每个Instance相对应的数组索引称为其Instance ID，GPU通过顶点数据将其传递到着色器的vertex程序。在大多数平台上，它是一个无符号整数，名为instanceID，具有SV_InstanceID语义。……UnityInstancing包含文件会使用矩阵数组的宏覆盖unity_ObjectToWorld。",
+    "section": "Instance IDs"
+  },
+  {
+    "claim": "UNITY_SETUP_INSTANCE_ID 必须在顶点程序最先执行，因为实例下标要对后续所有着色器代码全局可用。",
+    "source_quote": "要使它工作，instance的数组索引必须对所有着色器代码全局可用。必须通过_UNITY_SETUP_INSTANCE_ID_宏进行手动设置，该宏必须在vertex程序最先计算，然后再执行其他的代码。",
+    "section": "Instance IDs"
+  },
+  {
+    "claim": "每个实例需物体到世界与世界到物体两个矩阵，共 128 字节；桌面缓冲区上限 64KB 时最大批次约 500，UNITY_INSTANCED_ARRAY_SIZE 默认为 500。",
+    "source_quote": "一个矩阵由16个浮点数组成，每个浮点数均为4个字节。因此，每个矩阵64个字节。……因此，最终每个实例有128个字节。这导致最大批处理大小为“ 64000/128 = 500”……UNITY_INSTANCED_ARRAY_SIZE默认定义为500",
+    "section": "批处理大小"
+  },
+  {
+    "claim": "把 instancing_options maxcount 设为 512 会因断言失败，实际上限是 511；移动设备缓冲区可能只有 16KB，Unity 在 OpenGL ES 3、OpenGL Core、Metal 下会把上限除以四。",
+    "source_quote": "例如，#pragma instancing_options maxcount:512将最大值设置为512。但是，这将导致断言失败错误，因此实际限制为511。……大多数移动设备的最大容量远远达不到64，可能仅为16KB。 Unity通过在针对OpenGL ES 3，OpenGL Core或Metal时将最大值除以四来解决此问题。",
+    "section": "批处理大小"
+  },
+  {
+    "claim": "为每个球体新建材质实例会让合批失效并把批次数推高到五千以上；正确做法是材质属性块配合着色器里声明的实例缓冲区，同一份属性块在循环外建一次，循环里逐个渲染器设置。",
+    "source_quote": "即使我们为物料启用了批处理，它也不再起作用。由于每个球体现在都有自己的材质，因此每个球体的着色器状态也必被更改。 这显示在统计面板中为SetPass call的数量。……除了为每个球体创建新的材质实例外，我们还可以使用材质属性块。",
+    "section": "随机着色 / 材质属性块-Material Property Blocks"
+  },
+  {
+    "claim": "从 Unity 2017.3 起 UNITY_ACCESS_INSTANCED_PROP 需要两个参数：缓冲区名与属性名，旧版单参数写法会编译报错。",
+    "source_quote": "从2017.3及以上版本, UNITY_ACCESS_INSTANCED_PROP macro改了它需要的两个参数：buffer名，颜色名使用UNITY_ACCESS_INSTANCED_PROP(InstanceProperties, _Color).",
+    "section": "Property Buffers-属性缓冲区"
+  },
+  {
+    "claim": "实例缓冲区可用于颜色、浮点、矩阵和四分量向量；纹理无法直接实例化，需使用纹理数组并把索引放进实例缓冲区。缓冲区按 32 位分块，单个浮点与向量占用相同空间。",
+    "source_quote": "对于颜色，浮点数，矩阵和四分量浮点向量，这是可能的**。 **如果要改变纹理，可以使用单独的纹理数组**，并将索引添加到实例化缓冲区。……还应注意，缓冲区被划分为32位块，因此单个浮点数需要与向量相同的空间。",
+    "section": "Property Buffers-属性缓冲区"
+  },
+  {
+    "claim": "实例化只加在基础通道与阴影投射通道时，多光源的附加光照不参与合批；要把实例化与多光源结合只能切换到延迟渲染路径并在延迟通道加指令。",
+    "source_quote": "我们仅在base-pass和shadow caster-pass中添加了instance支持。 因此，批处理不适用于其他光源。……要将instance与多个光源结合使用，只能切换到延迟渲染路径。为此，请将所需的编译器指令添加到着色器的延迟传递中。",
+    "section": "多光源"
+  },
+  {
+    "claim": "LOD 组要参与实例化，需在支持实例化的每个过程加 lodfade 实例化选项，用缓冲数组替换 unity_LODFade；阴影通道也需加实例化指令并声明、设置实例 ID。",
+    "source_quote": "我们可以通过用缓冲数组替换unity_LODFade来实现。可以通过为支持实例化的每个过程添加lodfade实例化选项来指示Unity的着色器代码执行此操作。……在shadow caster-pass中添加instance指令；同时也增加`UNITY_VERTEX_INPUT_INSTANCE_ID` and `UNITY_SETUP_INSTANCE_ID`",
+    "section": "LOD Instance / Instance Shadows"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-fxaa\\unity-fxaa.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-fxaa\\unity-fxaa.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "deca20b8c18815b28314e8babbcaabac9a048cda507a52935bfc10fd42f564db",
+  "duration_seconds": 766.37,
+  "duration_hms": "12:46",
+  "bytes": 4598640,
+  "generated_at": "2026-11-15T09:36:06.178275+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-shadergui-extension-1\\unity-shadergui-extension-1.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-shadergui-extension-1\\unity-shadergui-extension-1.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "490ddb5578f93b9941d475a14853a23afd131491033d39861103d1241252e609",
+  "duration_seconds": 909.428,
+  "duration_hms": "15:09",
+  "bytes": 5456880,
+  "generated_at": "2026-11-15T10:28:21.097872+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

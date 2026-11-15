@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "法线分量与像素值的映射是 pixel 等于 normal 加一除以二，反向是 pixel 乘二减一，法线纹理必须按这个约定解码",
+    "source_quote": "像素分量范围是[0,1]，而法线分量范围[-1,1]。相互映射转换公式为：pixel = (normal+1)/2 ；normal = pixel · 2 – 1",
+    "section": "法线-Normal Map"
+  },
+  {
+    "claim": "DXT5nm 压缩只保留 X 与 Y 分量，Y 存在 G 通道、X 存在 A 通道，RB 通道被舍弃，Z 分量由单位向量长度反推得到",
+    "source_quote": "由于DXT5nm纹理压缩格式的原因，只存储了X与Y分量舍弃了Z分量(Y分量存储在G通道，X分量存储在A通道，RB通道被舍弃)。通过推导法向量的单位向量可得Z分量",
+    "section": "法线-Normal Map"
+  },
+  {
+    "claim": "凹凸缩放必须在反推 Z 分量之前应用，否则缩放不起作用",
+    "source_quote": "i.normal.xy *= _BumpScale;//计算Z之前缩放才有效，平坦凹凸程度",
+    "section": "法线-Normal Map"
+  },
+  {
+    "claim": "高度图求法线时，横向切向量为 1 与高度差与 0，法线是交换横纵分量并取反，即横分量取负的高度差、纵分量为 1",
+    "source_quote": "i.normal = float3( h1 - h2, 1 , 0);",
+    "section": "高度图-HeightMap"
+  },
+  {
+    "claim": "求法线的差分步长越小越精确，但必须大于 0 小于 1；中心差分用左右各半个纹素再相减，比有限差分更准确",
+    "source_quote": "δ值越小越精确，必须大于0小于1。",
+    "section": "高度图-HeightMap"
+  },
+  {
+    "claim": "两张法线直接相加取平均会让两者都变平坦，因为方向相反的向量平均后趋近零",
+    "source_quote": "方式一：(main.normal + details.normal) * 0.5; 简单容易，但结果不是很好。主纹理和细节纹理都变得平坦。理想情况下，当其中一个是平的，期望它不会影响到另一个。",
+    "section": "法线融合-Blending Normals"
+  },
+  {
+    "claim": "按斜率融合的做法是把两张法线的 XY 分别除以各自的 Z 后相加，再把 Z 设为 1，这样平的法线不会影响另一张",
+    "source_quote": "方式二：用z分量做缩放因子求偏导函数，然后相加。[Mx, My, Mz]T = [Mx/Mz, My/Mz, 1]T 同理求得detail偏导函数，然后相加：[Mx/Mz + Dx/Dz, My/Mz + Dy/Dz, 1]T",
+    "section": "法线融合-Blending Normals"
+  },
+  {
+    "claim": "白化融合的写法是 XY 相加、Z 相乘，也就是 Unity 标准工具库里 BlendNormals 用的做法",
+    "source_quote": "i.normal = float3(mainNormal.xy + detailNormal.xy, mainNormal.z * detailNormal.z);\n//UnityStandardUtils包含了混合函数\n//i.normal = BlendNormals(mainNormal, detailNormal);",
+    "section": "法线融合-Blending Normals"
+  },
+  {
+    "claim": "切线从模型空间转到世界空间时只有 XYZ 部分可以乘方向变换，W 分量是符号必须原样传递；镜像物体需要把 W 与世界变换参数的第四分量相乘来翻转副切线",
+    "source_quote": "使用UnityCG中的UnityObjectToWorldDir在顶点程序中将切线转换为世界空间。 当然，这仅适用于切线的XYZ部分。 它的W分量需要不加修改地传递。",
+    "section": "切线空间-Tangent Space"
+  },
+  {
+    "claim": "细节颜色乘法需要乘颜色空间双倍系数做空间转换，否则叠加后的结果会偏暗",
+    "source_quote": "albedo *= tex2D(_DetailTex, i.uv.zw) * unity_ColorSpaceDouble;//颜色空间转换",
+    "section": "细节纹理与细节法线-Detail Maps(Second Texture) 与 Detail Normals"
+  }
+]

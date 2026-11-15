@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "ForwardBase 光照标签只计算主方向光，额外的光必须新增一个 ForwardAdd Pass 才会被渲染",
+    "source_quote": "Pass光照标签ForwardBase只计算主光源， 为了渲染额外的光源，需要增加一个Pass且指定光照标签为ForwardAdd方可计算额外的光源。",
+    "section": "增加第二个Pass"
+  },
+  {
+    "claim": "Pass 不写 Blend 时默认不混合，等价于 Blend One Zero，因此 ForwardAdd 的结果会直接覆盖 ForwardBase；要叠加必须写成源一目标一",
+    "source_quote": "如果Pass内没有Blend默认不混合，Blend One Zero。每个Pass计算后的数据会写入帧缓冲区中，也就会替换之前任何写入该缓冲区的内容。为了把新旧数据都能加到帧缓冲区，我们可以需要指示GPU使用Blend one one模式。",
+    "section": "增加第二个Pass"
+  },
+  {
+    "claim": "ForwardAdd 中同一物体的深度值会被重复写入且完全相同，没有意义，应关闭深度写入",
+    "source_quote": "在forward add中重复计算minor光时，要添加到已经存在的灯光，再次运行fragment程序时，因为针对的是同一个对象，最终记录了完全相同的深度值。因此两次写入相同的深度信息是没必要的，用ZWrite off关闭它。",
+    "section": "增加第二个Pass"
+  },
+  {
+    "claim": "Unity 动态批处理最多只支持受一个方向光影响的物体，第二盏方向光会让动态合批失效",
+    "source_quote": "动态批处理失效了！Unity规定动态批处理最多只支持一个方向光作用的物体对象。",
+    "section": "合批-Draw Call Batches"
+  },
+  {
+    "claim": "光源位置变量在方向光下存的是朝向，在点光源下存的是真实位置，点光源必须自己用位置减片元世界坐标计算方向",
+    "source_quote": "_WorldSpaceLightPos0变量包含的是当前光的位置，但是在方向光的情况下，它实际上保存的是光方向的朝向。而我们使用了Point Light，这个变量就只是光的位置了(如其名)。因此必须要我们自己计算光的方向：减去片元的世界位置再归一化得到。",
+    "section": "光照位置-Light Position"
+  },
+  {
+    "claim": "点光源衰减因子是 1 除以 1 加距离平方，不是裸的 1 除以距离平方，加一是为了距离趋近零时亮度不发散",
+    "source_quote": "靠近光源时非常明亮，这是因为越靠近球体的中心点，距离就越小，直到趋近于0。修改公式 1/(1+d^2)。",
+    "section": "光s的衰减-Light Attenuation"
+  },
+  {
+    "claim": "Unity 把片元世界坐标转换到光源空间，用距离平方采样一维衰减纹理；使用该宏前必须在引用 AutoLight 之前定义光型宏 POINT",
+    "source_quote": "Unity把片元从世界空间转换到光源空间来计算点光源的衰减，光源空间是灯光对象本地空间坐标，按比例衰减。在该空间，点光源位于原点，任何超过一个单位的都不在该范围内，所以点到原点的距离的平方定义了衰减系数。",
+    "section": "光源范围-Light Range"
+  },
+  {
+    "claim": "同一份附加通道代码支持多种光型靠 multi_compile 关键字生成变体，Unity 按当前光源类型选变体，都不匹配时取关键字列表第一项",
+    "source_quote": "Unity决定使用那个变体，是基于当前光源类型和shader中定义的变体关键字。当渲染方向光它就使用_DIRECTIONAL_变体，当渲染点光源它就使用_POINT_变体。如果都不匹配，它就选着变体关键字列表中第一个变体。",
+    "section": "使用关键字-KeyWords"
+  },
+  {
+    "claim": "Unity 内置顶点光最多四盏且只支持点光源，逐像素光数量上限由 Pixel Light Count 决定，超出者按强度和距离排序后丢弃",
+    "source_quote": "Unity自带顶点光只支持Point Light。",
+    "section": "顶点光照计算-Vertex Lights"
+  },
+  {
+    "claim": "球谐光在基础通道内计算，必须使用独立于顶点光的 FORWARD_BASE_PASS 关键字，不能与 VERTEXLIGHT_ON 共用；采样结果要截断为非负",
+    "source_quote": "由于球谐光是不重要的光，我们也像计算顶点光一样在base pass通道计算，但是不能跟顶点光使用同一个关键字，需要独立定义FORWARD_BASE_PASS关键字。",
+    "section": "实际运用球谐函数-Using Spherical Harmonics"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-static-lightting\\unity-static-lightting.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-static-lightting\\unity-static-lightting.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "6650e670deb8d73cde63b76b59311ea0bdff62686a6a7acb0fb1f778ebcbd8b6",
+  "duration_seconds": 1095.55,
+  "duration_hms": "18:16",
+  "bytes": 6573600,
+  "generated_at": "2026-11-15T10:08:55.309130+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

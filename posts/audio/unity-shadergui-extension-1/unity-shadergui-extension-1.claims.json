@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "自定义 ShaderGUI 类继承 UnityEditor.ShaderGUI，脚本放在 Editor 文件夹；Shader 内引用该类时必须带命名空间。",
+    "source_quote": "创建一脚本继承UnityEditor.ShaderGUI，脚本放入Editor文件夹下……注意命名空间也要带上",
+    "section": "ShaderGUI 拓展"
+  },
+  {
+    "claim": "自定义 Shader 界面的做法与自定义 GUI 面板类似，区别在于需要重实现的函数不同。",
+    "source_quote": "自定义Shader界面功能，与自定义GUI面板类似，区别在于重实现函数不同。",
+    "section": "自定义界面"
+  },
+  {
+    "claim": "OnGUI 每帧都会被调用，所有方法会重复执行；只有面板属性改变时才应执行内部逻辑，需要成对使用开始与结束改变检查。",
+    "source_quote": "现在每帧调用OnGUI，会重复执行所有方法。理论上只有当material面板属性被改变了，调用执行内部方法。……Unity提供了EditorGUI.BeginChaneCheck和EditorGUI.EndChangeCheck方法。",
+    "section": "ChangeCheck检查"
+  },
+  {
+    "claim": "重写 OnGUI 后，从参数里拿到的属性数组就是读取入口；纹理属性用查找函数获取，并用内容容器组织名称或图标。",
+    "source_quote": "通过重实现OnGUI函数后，获取其参数地址就能读取。……可使用FindProperty和GUIContent容器",
+    "section": "显示Albedo纹理属性"
+  },
+  {
+    "claim": "金属贴图与金属滑条同时使用会让金属度双倍叠加，必须用 Shader 关键字在两者间二选一。",
+    "source_quote": "当使用metallicMap时就不能再使用metallicValue滑条，如不就会导致双倍叠加。……所以可以用Shader关键字来决定使用二者之一。",
+    "section": "定义Metallic的Shader关键字"
+  },
+  {
+    "claim": "多编译指令会编译出关键字的全部排列组合；特性编译可跳过没被使用的关键字，变体数量随之下降。",
+    "source_quote": "有没有使用Matallic贴图都会编译出如下排列组合……shader_feature没有使用Matallic贴图，变体数量降低",
+    "section": "使用自定义Keyword(Features)"
+  },
+  {
+    "claim": "特性编译最适合在编辑器里靠材质面板自动收集变体；若要在运行时切换，必须确保所有变体都构建进应用，做不到时退而使用多编译。",
+    "source_quote": "对于shader_feature最佳食用方法就是在编辑器模式，人工配置material面板属性自动收集变体。……如果要在runtime使用shader_feature，就要确保所有的shader变体都被构建进应用内……对于第二点的稍次解决方案就是使用muti_compile指令",
+    "section": "使用自定义Keyword(Features)"
+  },
+  {
+    "claim": "金属与平滑度应合并在同一张金属贴图的不同通道：省一次采样，并利用 DXT5 分离 RGB 与 A 通道的特性。",
+    "source_quote": "而事实上它要求金属和光滑值合并在同一张金属贴图的不同通道……一是不用采样两次；二是DXT5压缩会分离RGB和A通道",
+    "section": "光滑纹理"
+  },
+  {
+    "claim": "DXT5nm 压缩法线贴图会产生伪影：锐利对角边未与 UV 轴对齐时无法正确近似，金属和非常光滑的表面上最明显。",
+    "source_quote": "DXT5nm纹理压缩法线贴图会造成伪影。……尖锐的对角边没有与UV轴对齐，不能正确地近似。……这种缺点在金属和非常光滑的表面上变得清晰可见。",
+    "section": "光滑纹理"
+  },
+  {
+    "claim": "自发光只需在基础通道采样一次；HDR 颜色的 RGB 分量可以大于 1，用于产生泛光。",
+    "source_quote": "只需要在basePase采样一次即可。……HDR：颜色的RGB分量可以大于1，创建bloom效果。",
+    "section": "自发光"
+  }
+]

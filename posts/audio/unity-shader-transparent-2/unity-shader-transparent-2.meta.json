@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-shader-transparent-2\\unity-shader-transparent-2.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-shader-transparent-2\\unity-shader-transparent-2.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "97070cede533d56355ef679da5ab731ad62dab5ba09bea4e639d5565852ad65c",
+  "duration_seconds": 914.343,
+  "duration_hms": "15:14",
+  "bytes": 5486400,
+  "generated_at": "2026-11-15T10:35:24.358246+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

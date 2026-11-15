@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-parallax-normals-heightmap\\unity-parallax-normals-heightmap.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-parallax-normals-heightmap\\unity-parallax-normals-heightmap.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "98f4fe7fb4ecb59d9cbc104bd02295acea9eaad9abf6edf4ec69c0f9f5749b45",
+  "duration_seconds": 1190.391,
+  "duration_hms": "19:50",
+  "bytes": 7142688,
+  "generated_at": "2026-11-15T10:01:37.937770+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

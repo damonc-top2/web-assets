@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-first-light\\unity-first-light.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-first-light\\unity-first-light.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "dbd659ce12c72f84817c81661db4829f2006ba2466ab2a32fa20e6851eef4e8f",
+  "duration_seconds": 1138.087,
+  "duration_hms": "18:58",
+  "bytes": 6828912,
+  "generated_at": "2026-11-15T10:14:39.483220+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

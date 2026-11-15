@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "前向渲染在无阴影时为 132 次 Draw Call，开阴影后为 408 次；延迟渲染同等条件下开阴影为 231 次。",
+    "source_quote": "没有阴影下，128次几何绘制加1次Clear；`1次`天空盒绘制；`2次`屏幕处理绘制，总共**132**次Draw Call。……总共**408**次Draw Calls。",
+    "section": "开始对比Draw Calls"
+  },
+  {
+    "claim": "延迟渲染的四张 G-Buffer 分别是 RT0 的 albedo 与 occlusion、RT1 的 specular 与 smoothness、RT2 的世界空间法线、RT3 的 emission 与 reflection。",
+    "source_quote": "Albedo-对应RT0；典型代表diffuse color Specular--对应RT1；典型代表specular + roughness Normal-对应RT2；典型代表normals Emission--对应RT3；典型代表emission + reflection",
+    "section": "分析什么是G-Buffers"
+  },
+  {
+    "claim": "四张 G-Buffer 合并后每像素 LDR 为 160 位、HDR 为 192 位，远大于 32 位常规颜色缓冲，因此移动 GPU 受限制而桌面不受限。",
+    "source_quote": "deferred要求4个G-Buffers，合并后每个像素总位数：LDR160位，HDR192位。这比起32位大多了，所以对于移动GPU有限制，桌面则没问题。",
+    "section": "分析什么是G-Buffers"
+  },
+  {
+    "claim": "RT2 法线缓冲使用 ARGB2101010 格式，RGB 各 10 位、Alpha 2 位，编码方式是乘 0.5 加 0.5，比 8 位更精确。",
+    "source_quote": "该g-Buffer包含了世界空间法线向量，存在RGB通道，是一个ARGB2101010格式纹理。Alpha占2位，RGB各占10位。这意味着该向量的每个标量占10bits而不是之前的8位，也就有更精确。",
+    "section": "计算Buffer 2"
+  },
+  {
+    "claim": "RT3 的纹理格式随相机的 HDR 开关变化：LDR 为 ARGB2101010，HDR 为 ARGBHalf，每通道 16 位浮点、共 64 位，因此 HDR 版本内存约为其他缓冲的两倍。",
+    "source_quote": "LDR是ARGB2101010格式。HDR是ARGBHalf格式，每个通道存储16位单精度浮点数，共64位。因此HDR版本比其他buffers大两倍内存。",
+    "section": "计算Buffer 3"
+  },
+  {
+    "claim": "延迟 pass 中要关闭 ndotl 计算，并让取自发光的函数把 DEFERRED_PASS 分支包含进去，否则自发光会丢失。",
+    "source_quote": "上面使用的color颜色已计算过阴影，需要使用DEFRRED_PASS重新计算；同时关闭`light.ndotl计算；在GetEmission也要使用DEFRRED_PASS标签",
+    "section": "计算Buffer 3"
+  },
+  {
+    "claim": "LDR 路径下 Unity 对颜色做以 2 为底的对数编码以扩大可表示范围，自发光与环境光也必须按同样方式编码；开启 HDR 时延迟与前向效果几乎一致，关闭 HDR 时未编码的延迟结果是错误的。",
+    "source_quote": "开启HDR模式下，Deferred与Forward着色效果几乎相似。但是在LDR模式下，Deferred着色就是错误的。……所以对自发光和环境光也要使用exp2(x)编码。",
+    "section": "HDR 与 LDR"
+  },
+  {
+    "claim": "延迟渲染不支持 MSAA，三角形边缘仍可受益但延迟数据仍会混叠，必须依靠后处理抗锯齿。",
+    "source_quote": "Deferred不支持MSAA，如果启用Camera组件会有Warning……尽管三角形边缘仍然可以从MSAA中受益，但延迟的数据仍会混叠。 您必须依靠一个后处理过滤器来进行抗锯齿。",
+    "section": "开始对比Draw Calls"
+  },
+  {
+    "claim": "聚光灯与点光源用金字塔或球体网格写模板缓冲，只对体积内片元算光照；当光的体积与相机近平面相交时该方法失效。",
+    "source_quote": "首先，使用Internal-StencilWrite shader渲染该金字塔Mesh并写入**模板缓冲**区；……**注意**，当光的体积与相机的近平面相交则该方法失效。",
+    "section": "光源如何渲染分析"
+  },
+  {
+    "claim": "延迟模式下反射按像素混合而非按物体混合，无法用锚点重写强制指定探针；应在延迟 pass 中用 UNITY_ENABLE_REFLECTION_BUFFERS 判断是否需要采样反射。",
+    "source_quote": "虽然deferred很有效，并且每个物体可以混合两个以上的探针。也有**缺点**：不能使用锚重写来强制对象使用特定的反射探测。……要确保deferred pass只在有需要时采样，用UNITY_ENABLE_REFLECTION_BUFFERS来检查。",
+    "section": "Deferred Pass下的反射"
+  }
+]

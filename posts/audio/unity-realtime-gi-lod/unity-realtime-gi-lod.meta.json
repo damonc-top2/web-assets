@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-realtime-gi-lod\\unity-realtime-gi-lod.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-realtime-gi-lod\\unity-realtime-gi-lod.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "bb034c2da78b27672acb1c77a027d846d91659fe4c0c3629b2891ff071937e28",
+  "duration_seconds": 1183.632,
+  "duration_hms": "19:44",
+  "bytes": 7102080,
+  "generated_at": "2026-11-15T09:59:59.940273+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

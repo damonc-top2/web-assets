@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\triplanar-mapping\\triplanar-mapping.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\triplanar-mapping\\triplanar-mapping.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "0d7b20a83438a34526a0936b977e6b9c5abce9625d83793ed171e69545247e29",
+  "duration_seconds": 1101.184,
+  "duration_hms": "18:21",
+  "bytes": 6607440,
+  "generated_at": "2026-11-15T09:36:48.891255+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

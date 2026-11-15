@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "法线必须用世界到对象矩阵的转置来变换，而不是直接用对象到世界的矩阵，因为非均匀缩放会把法线拉歪。",
+    "source_quote": "所以我们必须反转比例，但旋转应该保持不变。……因此，再对`unity_WorldToObject`矩阵转置后并与顶点法线相乘。",
+    "section": "转换法线到世界空间"
+  },
+  {
+    "claim": "UnityObjectToWorldNormal 内部没有调用 transpose，而是用世界到对象矩阵的三行分别点乘法线分量，因为 transpose 会生成优化很差的代码。",
+    "source_quote": "// Multiply by transposed inverse matrix,\n// actually using transpose() generates badly optimized code\nreturn normalize(\n        unity_WorldToObject[0].xyz * norm.x +\n        unity_WorldToObject[1].xyz * norm.y +\n        unity_WorldToObject[2].xyz * norm.z\n);",
+    "section": "转换法线到世界空间"
+  },
+  {
+    "claim": "动态合批会把网格从本地空间转换到世界空间，法线也被一起转换，所以同样材质的立方体在不同视角下颜色会变。",
+    "source_quote": "要合并网格，必须将它们从本地空间转换为世界空间。……由于这种转换也会影响法线，这就是我们看到颜色变化的原因。",
+    "section": "动态批处理"
+  },
+  {
+    "claim": "把法线当作向量做矩阵变换时，齐次坐标的第四个分量必须设为 0，否则法线会被平移。",
+    "source_quote": "虽然是不同空间转换但是也要保持空间内的方向一致, 所以其次坐标第四个分量设为0。",
+    "section": "转换法线到世界空间"
+  },
+  {
+    "claim": "法线在顶点程序里归一化后，仍要在片元程序里再归一化一次；这一步在移动设备上可以省略，因为误差通常很小。",
+    "source_quote": "然而，在不同的单位长度向量之间进行值传递，并不能确保法线的归一化。所以我们必须在片元函数中再次对法线进行归一化。……虽然再次归一化会产生更好的结果，但是值的误差其实通常非常小。如果在移动设备上，这一步可以省略。",
+    "section": "再次归一化法线 ReNormalsed"
+  },
+  {
+    "claim": "漫反射等于反照率乘光照颜色再乘光方向与法线的点积，点积必须截断到非负；Unity 用 DotClamped 封装了这次点积加截断。",
+    "source_quote": "$Diffuse = Albedo \\cdot lightColor \\cdot DotClamped(lightDir, normal)$",
+    "section": "漫反射 Diffuse Shading"
+  },
+  {
+    "claim": "使用场景光源必须给 Pass 加 LightMode 标签，前向渲染对应 ForwardBase；不加标签拿不到光照数据。",
+    "source_quote": "在产生正确的结果之前，我们必须告诉Unity我们想要使用哪些光照数据。我们通过添加一个LightMode变量标记到我们的着色器通道。",
+    "section": "灯光模式 Light Mode"
+  },
+  {
+    "claim": "_LightColor0 表示光源颜色乘以光源强度；_WorldSpaceLightPos0 是齐次坐标，平行光的第四个分量不需要使用。",
+    "source_quote": "`_LightColor0`变量表示光的颜色乘以光的强度：首先它是有rgba颜色值，同时光组件有一个Intensity强度属性，会改变颜色值的大小。……`UnityShaderVariables`定义`float4 _WorldSpaceLightPos0`，其中包含当前灯光的位置和光线来自的方向，在定向光的情况下，它有四个分量。因为它们是齐次坐标，所以我们的定向光的第四个分量是不需要的。",
+    "section": "光照颜色 Light Color"
+  },
+  {
+    "claim": "Blinn-Phong 把光线方向与视线方向相加归一化得到半角向量，再用半角向量与法线的点积取光滑度乘 100 的幂作为高光；光滑度越高亮斑越小。",
+    "source_quote": "通过使用一个光照方向和视野方向的半角方向，然后再取法向量和半角向量的点积结果来决定镜面反射。……我们使用smoothness作为因子，通过提高点积的幂次来缩小光点。但是必须要比1大得多才具有更好的效果。再给因子提高100倍。",
+    "section": "Blinn-Phong光照公式"
+  },
+  {
+    "claim": "能量守恒要求漫反射与高光之和不超过光源能量，单色做法是把反照率乘以 1 减去高光颜色最强分量；金属工作流则进一步用金属度在电介质色与反照率之间插值出高光颜色。",
+    "source_quote": "我们必须确保材质的漫反射和镜面反射部分的总和不能超过1。……为了防止这种着色，我们可以使用单色能量守恒。这只是意味着我们使用镜面反射颜色的最强分量来降低反照率。……这被称为金属工作流程。",
+    "section": "能量守恒 Energy Conservation"
+  }
+]

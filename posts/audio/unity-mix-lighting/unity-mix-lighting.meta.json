@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-mix-lighting\\unity-mix-lighting.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-mix-lighting\\unity-mix-lighting.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "e8ac8566e9b2753b50cad8a1e5e1f9c4383193448352c089d02e1f4949ebf380",
+  "duration_seconds": 943.251,
+  "duration_hms": "15:43",
+  "bytes": 5659920,
+  "generated_at": "2026-11-15T10:09:46.416611+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-combine-texture\\unity-combine-texture.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-combine-texture\\unity-combine-texture.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "b17cb9f911e04a2332f603422af54a4524d46c1ae30af4ecaf40d9458e4e63dc",
+  "duration_seconds": 919.578,
+  "duration_hms": "15:20",
+  "bytes": 5517792,
+  "generated_at": "2026-11-15T10:12:15.084896+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}

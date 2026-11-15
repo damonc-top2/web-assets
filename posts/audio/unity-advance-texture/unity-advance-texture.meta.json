@@ -1,0 +1,13 @@
+{
+  "script": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-advance-texture\\unity-advance-texture.script.txt",
+  "output": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\web-assets\\posts\\audio\\unity-advance-texture\\unity-advance-texture.mp3",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "+0%",
+  "provider": "edge-tts",
+  "cache_key": "9fbe84902b7db72b199033cc7c22dd1d2cbb527bd3a111705e014d63cb8bc6a2",
+  "duration_seconds": 774.854,
+  "duration_hms": "12:55",
+  "bytes": 4649472,
+  "generated_at": "2026-11-15T09:56:39.543504+00:00",
+  "lexicon": "H:\\github\\mini-blog\\.claude\\worktrees\\blog-audio-development\\tools\\audio\\lexicon.tsv"
+}
