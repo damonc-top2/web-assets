@@ -1,0 +1,52 @@
+[
+  {
+    "claim": "LDR 光照数据用 2 的负 C 次方做指数编码，第二个 Pass 用负的以二为底对数解码。",
+    "source_quote": "LDR颜色使用指数编码: $2^{-C}$，使用对数解码 $-log2^C$",
+    "section": "颜色转换Converting Colors"
+  },
+  {
+    "claim": "第二个 Pass 必须用模板缓冲排除背景片元，模板参考值和读掩码由 _StencilNonBackground 提供。",
+    "source_quote": "在**第二个Pass中配置**：应该只渲染不属于背景的片段，可通过_StencilNonBackground提供适当的模板值。",
+    "section": "Avoiding the Sky"
+  },
+  {
+    "claim": "LDR 下编码后的光照用 Blend DstColor Zero 乘入光照缓冲，HDR 下用加法；为兼顾两条路径必须写成 Blend [_SrcBlend] [_DstBlend]。",
+    "source_quote": "这可以用：Blend DstColor Zero实现。**注意**只用该Blend mode会引起HDR的错误。所以需要灵活配置：Blend [_SrcBlend] [_DstBlend]",
+    "section": "支持LDR Supporting LDR"
+  },
+  {
+    "claim": "光照 Pass 不提供 G-Buffer 的 UV，需要从裁剪空间用 ComputeScreenPos 得到四维齐次坐标，并在片元中除以 w 得到二维屏幕 UV。",
+    "source_quote": "该light pass通道unity不支持提供该坐标。解决办法：从clip-space传递过来，使用ComputeScreenPos函数计算，返回一个float4的齐次坐标。",
+    "section": "G-Buffer UV Coordinates"
+  },
+  {
+    "claim": "重建世界坐标时，射线先缩放到远平面，再乘线性化深度得到视图空间位置，最后用 unity_CameraToWorld 转到世界空间。",
+    "source_quote": "所以必须要缩放射线以便它能达到far-plane：缩放射线使Z坐标变为1，并与远平面距离相乘。",
+    "section": "坐标转换World Position"
+  },
+  {
+    "claim": "_LightDir 是光到表面的方向，而 BRDF 需要表面到光的方向，因此赋给光源结构前要取反。",
+    "source_quote": "原因：_LightDir是光到表面的方向。在CreateLight计算中需要表面到光的方向",
+    "section": "光源配置 Configuring the Light"
+  },
+  {
+    "claim": "_LightAsQuad 为 1 时用顶点法线作射线，为 0 时用 UnityObjectToViewPos 把顶点位置转到视图空间并把 X、Y 取反，两种来源用 lerp 插值而不是条件分支。",
+    "source_quote": "如果 _LightAsQuad 被设为1，则处理的是方向光quad并且可以使用法线。否则，我们必须使用UnityObjectToViewPos。插值好过if ==> from + (to – from) * t, t为1直接使用法线，为0直接计算到view-space",
+    "section": "World Position Agin"
+  },
+  {
+    "claim": "阴影渐隐距离由 UnityComputeShadowFadeDistance 计算：Stable Fit 以阴影贴图中心为球心，Close Fit 依赖视野深度；渐隐因子由 UnityComputeShadowFade 返回。",
+    "source_quote": "在Stable Fit模式下，以map的中心点呈球面形开始渐隐消失阴影；在Close Fit模式它是依赖于视野深度。",
+    "section": "Fading Shadows"
+  },
+  {
+    "claim": "聚光灯 cookie 的变换结果是四维齐次坐标，X、Y 要除以 W；前后会出现两个光锥，只保留 W 为负的前向锥。",
+    "source_quote": "上图实际上产生了两个光锥，一个向前一个向后。 后向圆锥通常在渲染区域之外结束，但这并不能保证。我们只需要前向锥，它对应于负的W坐标。",
+    "section": "锥形衰减 Cookie Attenuation"
+  },
+  {
+    "claim": "距离衰减查找纹理以距离平方乘光照范围作为 UV，范围在 _LightPos 第四个分量中，采样通道由 _UNITY_ATTEN_CHANNEL 决定。",
+    "source_quote": "纹理被设计成必须使用光的距离的平方，并按光的范围进行缩放，作为UV进行采样。范围存储在 _LightPos的第四个分量中。采样得到的纹理应该使用哪个通道在不同的平台，由 _UNITY_ATTEN_CHANNEL 宏定义。",
+    "section": "距离衰减 Distance Attenuation"
+  }
+]
